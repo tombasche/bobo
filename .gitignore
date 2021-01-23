@@ -1,5 +1,2 @@
-*.pyc
-
-*/venv
-
+.vscode
 backend/db_data
