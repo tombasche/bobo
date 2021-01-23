@@ -16,4 +16,14 @@ defmodule BoboWeb.Schema do
     end
   end
 
+  mutation do
+    @desc "Create a new book"
+    field :create_book, :book do
+      arg :title, non_null(:string)
+      arg :author, non_null(:string)
+
+      resolve(&BooksResolver.create_book/3)
+    end
+  end
+
 end
