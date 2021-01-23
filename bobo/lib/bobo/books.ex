@@ -3,10 +3,8 @@ defmodule Bobo.Books do
   The Books context.
   """
 
-  import Ecto.Query, warn: false
-  alias Bobo.Repo
-
   alias Bobo.Books.Book
+  alias Bobo.Repo
 
   @doc """
   Returns the list of books.

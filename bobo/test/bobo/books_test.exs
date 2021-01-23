@@ -6,9 +6,33 @@ defmodule Bobo.BooksTest do
   describe "books" do
     alias Bobo.Books.Book
 
-    @valid_attrs %{author: "some author", title: "some title"}
-    @update_attrs %{author: "some updated author", title: "some updated title"}
-    @invalid_attrs %{author: nil, title: nil}
+    @valid_attrs %{
+      author: "some author",
+      comments: "some comments",
+      date_finished: ~D[2010-04-17],
+      date_started: ~D[2010-04-17],
+      genres: ["fantasy"],
+      rating: 3,
+      title: "Fantasy"
+    }
+    @update_attrs %{
+      author: "some updated author",
+      comments: "some updated comments",
+      date_finished: ~D[2011-05-18],
+      date_started: ~D[2011-05-18],
+      genres: ["fiction", "crime"],
+      rating: 4,
+      title: "Crime"
+    }
+    @invalid_attrs %{
+      author: nil,
+      comments: nil,
+      date_finished: nil,
+      date_started: nil,
+      genres: nil,
+      rating: nil,
+      title: nil
+    }
 
     def book_fixture(attrs \\ %{}) do
       {:ok, book} =
@@ -32,7 +56,12 @@ defmodule Bobo.BooksTest do
     test "create_book/1 with valid data creates a book" do
       assert {:ok, %Book{} = book} = Books.create_book(@valid_attrs)
       assert book.author == "some author"
-      assert book.title == "some title"
+      assert book.comments == "some comments"
+      assert book.date_finished == ~D[2010-04-17]
+      assert book.date_started == ~D[2010-04-17]
+      assert book.genres == ["fantasy"]
+      assert book.rating == 3
+      assert book.title == "Fantasy"
     end
 
     test "create_book/1 with invalid data returns error changeset" do
@@ -43,7 +72,12 @@ defmodule Bobo.BooksTest do
       book = book_fixture()
       assert {:ok, %Book{} = book} = Books.update_book(book, @update_attrs)
       assert book.author == "some updated author"
-      assert book.title == "some updated title"
+      assert book.comments == "some updated comments"
+      assert book.date_finished == ~D[2011-05-18]
+      assert book.date_started == ~D[2011-05-18]
+      assert book.genres == ["fiction", "crime"]
+      assert book.rating == 4.0
+      assert book.title == "Crime"
     end
 
     test "update_book/2 with invalid data returns error changeset" do

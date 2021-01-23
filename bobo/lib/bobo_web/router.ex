@@ -8,7 +8,7 @@ defmodule BoboWeb.Router do
   scope "/" do
     pipe_through :api
 
-    forward "/graphiql", Absinthe.Plug.GraphiQL,
+    forward "/graphql", Absinthe.Plug.GraphiQL,
       schema: BoboWeb.Schema,
       interface: :simple,
       context: %{pubsub: BoboWeb.Endpoint}

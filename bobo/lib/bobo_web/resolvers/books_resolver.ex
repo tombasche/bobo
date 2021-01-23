@@ -9,6 +9,7 @@ defmodule BoboWeb.BooksResolver do
     case Books.create_book(args) do
       {:ok, book} ->
         {:ok, book}
+
       _error ->
         {:error, "Could not create book :("}
     end

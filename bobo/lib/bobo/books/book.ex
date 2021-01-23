@@ -5,6 +5,11 @@ defmodule Bobo.Books.Book do
   schema "books" do
     field :author, :string
     field :title, :string
+    field :rating, :float
+    field :genres, {:array, :string}
+    field :date_started, :date
+    field :date_finished, :date
+    field :comments, :string
 
     timestamps()
   end
@@ -12,7 +17,7 @@ defmodule Bobo.Books.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:title, :author])
-    |> validate_required([:title, :author])
+    |> cast(attrs, [:title, :author, :rating, :genres, :date_started, :date_finished, :comments])
+    |> validate_required([:title, :author, :rating, :genres, :date_finished])
   end
 end

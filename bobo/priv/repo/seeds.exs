@@ -1,16 +1,26 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Bobo.Repo.insert!(%Bobo.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
 alias Bobo.Books.Book
 alias Bobo.Repo
 
-%Book{title: "Relish", author: "Lucy Knisley"} |> Repo.insert!
-%Book{title: "The Return of the King", author: "J.R.R. Tolkien"} |> Repo.insert!
+# %Book{
+#   title: "Relish",
+#   author: "Lucy Knisley",
+#   rating: 4.0,
+#   genres: ["non-fiction", "graphic novel", "food"],
+#   date_finished: ~D[2019-04-20],
+#   comments: "Great read!"
+# }
+# |> Repo.insert!()
+
+# %Book{
+#   title: "The Return of the King",
+#   author: "J.R.R. Tolkien",
+#   rating: 5.0,
+#   genres: [
+#     "fiction",
+#     "fantasy"
+#   ],
+#   date_finished: ~D[2020-01-03],
+#   date_started: ~D[2019-12-27],
+#   comments: "Lots of talk of food"
+# }
+# |> Repo.insert!()
