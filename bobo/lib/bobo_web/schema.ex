@@ -14,6 +14,17 @@ defmodule BoboWeb.Schema do
     field :comments, :string
   end
 
+  input_object :update_book do
+    field :title, :string
+    field :author, :string
+    field :rating, :float
+    field :genres, list_of(:string)
+    field :date_finished, :string
+    field :date_started, :string
+    field :comments, :string
+  end
+
+
   query do
     @desc "Get all books"
     field :all_books, non_null(list_of(non_null(:book))) do
@@ -29,5 +40,15 @@ defmodule BoboWeb.Schema do
 
       resolve(&BooksResolver.create_book/3)
     end
+
+    @desc "Update an existing book by id"
+    field :update_book, :book do
+      arg(:id, non_null(:id))
+      arg(:book, :update_book)
+
+      resolve(&BooksResolver.update_book/3)
+    end
+
   end
+
 end

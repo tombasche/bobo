@@ -36,6 +36,20 @@ defmodule Bobo.Books do
   def get_book!(id), do: Repo.get!(Book, id)
 
   @doc """
+  Gets a single book without raising an exception.
+
+  ## Examples
+
+      iex> get_book(123)
+      {:ok, %Book{}}
+
+      iex> get_book(456)
+      {:error, %Book{}}
+
+  """
+  def get_book(id), do: Repo.get(Book, id)
+
+  @doc """
   Creates a book.
 
   ## Examples
