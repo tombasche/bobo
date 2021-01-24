@@ -30,6 +30,12 @@ defmodule BoboWeb.Schema do
     field :all_books, non_null(list_of(non_null(:book))) do
       resolve(&BooksResolver.all_books/3)
     end
+
+    @desc "Get a single book by id"
+    field :single_book, non_null(:book) do
+      arg(:id, non_null(:id))
+      resolve(&BooksResolver.single_book/3)
+    end
   end
 
   mutation do

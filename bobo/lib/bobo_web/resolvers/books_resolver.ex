@@ -5,6 +5,15 @@ defmodule BoboWeb.BooksResolver do
     {:ok, Books.list_books()}
   end
 
+  def single_book(_root, args, _info) do
+    case Books.get_book(args.id) do
+      nil ->
+        {:error, "Book #{args.id} not found"}
+      book ->
+        {:ok, book}
+    end
+  end
+
   def create_book(_root, args, _info) do
     case Books.create_book(args) do
       {:ok, book} ->
