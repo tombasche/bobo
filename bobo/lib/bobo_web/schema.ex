@@ -49,6 +49,12 @@ defmodule BoboWeb.Schema do
       resolve(&BooksResolver.update_book/3)
     end
 
+    @desc "Delete a book"
+    field :delete_book, :book do
+      arg(:id, non_null(:id))
+      resolve(&BooksResolver.delete_book/3)
+    end
+
   end
 
 end
