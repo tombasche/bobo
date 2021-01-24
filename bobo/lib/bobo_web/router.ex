@@ -2,6 +2,7 @@ defmodule BoboWeb.Router do
   use BoboWeb, :router
 
   pipeline :api do
+    plug Corsica, origins: "http://localhost:3000", allow_headers: :all
     plug :accepts, ["json"]
   end
 
