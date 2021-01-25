@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import { GlobalStyles } from "./themes/themes";
 import { ApolloProvider } from '@apollo/client';
 import { Books } from './containers/Books';
 
@@ -13,9 +13,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <GlobalStyles />
       <div>
         {<Books />}
       </div>
+
     </ApolloProvider>
   );
 }
