@@ -4,26 +4,25 @@ defmodule BoboWeb.Schema do
   alias BoboWeb.BooksResolver
 
   object :book do
-    field :id, non_null(:id)
-    field :title, non_null(:string)
-    field :author, non_null(:string)
-    field :rating, non_null(:float)
-    field :genres, list_of(:string)
-    field :date_finished, non_null(:string)
-    field :date_started, :string
-    field :comments, :string
+    field(:id, non_null(:id))
+    field(:title, non_null(:string))
+    field(:author, non_null(:string))
+    field(:rating, non_null(:float))
+    field(:genres, list_of(:string))
+    field(:date_finished, non_null(:string))
+    field(:date_started, :string)
+    field(:comments, :string)
   end
 
   input_object :update_book do
-    field :title, :string
-    field :author, :string
-    field :rating, :float
-    field :genres, list_of(:string)
-    field :date_finished, :string
-    field :date_started, :string
-    field :comments, :string
+    field(:title, :string)
+    field(:author, :string)
+    field(:rating, :float)
+    field(:genres, list_of(:string))
+    field(:date_finished, :string)
+    field(:date_started, :string)
+    field(:comments, :string)
   end
-
 
   query do
     @desc "Get all books"
@@ -43,6 +42,9 @@ defmodule BoboWeb.Schema do
     field :create_book, :book do
       arg(:title, non_null(:string))
       arg(:author, non_null(:string))
+      arg(:date_finished, non_null(:string))
+      arg(:genres, non_null(list_of(:string)))
+      arg(:rating, non_null(:float))
 
       resolve(&BooksResolver.create_book/3)
     end
@@ -60,7 +62,5 @@ defmodule BoboWeb.Schema do
       arg(:id, non_null(:id))
       resolve(&BooksResolver.delete_book/3)
     end
-
   end
-
 end

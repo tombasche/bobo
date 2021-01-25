@@ -9,6 +9,7 @@ defmodule BoboWeb.BooksResolver do
     case Books.get_book(args.id) do
       nil ->
         {:error, "Book #{args.id} not found"}
+
       book ->
         {:ok, book}
     end
@@ -19,8 +20,8 @@ defmodule BoboWeb.BooksResolver do
       {:ok, book} ->
         {:ok, book}
 
-      _error ->
-        {:error, "Could not create book :("}
+      {:error, r} ->
+        {:error, "#{changeset_error_to_string(r)}"}
     end
   end
 
@@ -28,10 +29,12 @@ defmodule BoboWeb.BooksResolver do
     case Books.get_book(args.id) do
       nil ->
         {:error, "Book with id '#{args.id}' not found"}
+
       book ->
         case Books.update_book(book, args.book) do
           {:ok, new_book} ->
             {:ok, new_book}
+
           _error ->
             {:error, "Could not update '#{book.title}'"}
         end
@@ -42,13 +45,27 @@ defmodule BoboWeb.BooksResolver do
     case Books.get_book(args.id) do
       nil ->
         {:error, "Book with id '#{args.id}' not found"}
+
       book ->
         case Books.delete_book(book) do
           {:ok, empty_book} ->
             {:ok, empty_book}
+
           _error ->
             {:error, "Could not delete '#{book.title}' - perhaps it doesn't exist?"}
         end
     end
+  end
+
+  defp changeset_error_to_string(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, fn {msg, opts} ->
+      Enum.reduce(opts, msg, fn {key, value}, acc ->
+        String.replace(acc, "%{#{key}}", to_string(value))
+      end)
+    end)
+    |> Enum.reduce("", fn {k, v}, acc ->
+      joined_errors = Enum.join(v, "; ")
+      "#{acc}#{k}: #{joined_errors}. "
+    end)
   end
 end
