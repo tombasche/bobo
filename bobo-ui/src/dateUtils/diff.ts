@@ -1,11 +1,11 @@
 
-export const DateDiff = (now: Date, then: Date): string => {
+export const diffDate = (now: Date, then: Date): string => {
 
     const diff: number = now.getTime() - then.getTime();
     const seconds = Math.abs(toSeconds(diff));
     if (seconds < 60) {
         if (seconds < 5) {
-            return 'Just now';
+            return 'just now';
         }
         return `${rounded(seconds)} seconds ago`;
     }
