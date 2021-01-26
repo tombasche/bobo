@@ -7,18 +7,8 @@ defmodule Bobo.Books do
   alias Bobo.Repo
   import Ecto.Query, only: [from: 2]
 
-  @doc """
-  Returns the list of books.
-
-  ## Examples
-
-      iex> list_books()
-      [%Book{}, ...]
-
-  """
   def list_books do
-    query = from(b in Book, order_by: [desc: b.date_finished])
-    Repo.all(query)
+    Repo.all(from(b in Book, order_by: [desc: b.date_finished]))
   end
 
   @doc """
@@ -37,18 +27,6 @@ defmodule Bobo.Books do
   """
   def get_book!(id), do: Repo.get!(Book, id)
 
-  @doc """
-  Gets a single book without raising an exception.
-
-  ## Examples
-
-      iex> get_book(123)
-      {:ok, %Book{}}
-
-      iex> get_book(456)
-      {:error, %Book{}}
-
-  """
   def get_book(id), do: Repo.get(Book, id)
 
   @doc """
