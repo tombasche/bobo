@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { diffDate } from '../dateUtils/diff';
 import { parseServerDate } from '../dateUtils/parse';
 import { SmallFont } from './SmallFont';
