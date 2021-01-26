@@ -115,8 +115,18 @@ defmodule Bobo.Books do
     Book.changeset(book, attrs)
   end
 
+  @doc """
+  Returns a list of books by search term.
+
+  ## Examples
+
+      iex> search_books("The Fellowship of the Ring")
+      [%Book{}, ...]
+
+  """
   def search_books(search_term) do
-    filters = [title: search_term]
+    filters = Keyword.new([:title, :author], fn x -> {x, search_term} end)
+    IO.inspect(IEx.Info.info(filters))
 
     query =
       Enum.reduce(filters, Book, fn {key, value}, query ->

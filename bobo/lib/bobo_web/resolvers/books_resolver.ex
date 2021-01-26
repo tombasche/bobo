@@ -17,11 +17,11 @@ defmodule BoboWeb.BooksResolver do
 
   def search_books(_root, args, _info) do
     case Books.search_books(args.search_term) do
+      nil ->
+        {:error, "No results"}
+
       books ->
         {:ok, books}
-
-      _ ->
-        {:error, "No results"}
     end
   end
 
