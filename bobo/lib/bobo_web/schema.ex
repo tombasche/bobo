@@ -35,6 +35,12 @@ defmodule BoboWeb.Schema do
       arg(:id, non_null(:id))
       resolve(&BooksResolver.single_book/3)
     end
+
+    @desc "Search for a book by a search term"
+    field :search_books, non_null(list_of(non_null(:book))) do
+      arg(:search_term, non_null(:string))
+      resolve(&BooksResolver.search_books/3)
+    end
   end
 
   mutation do

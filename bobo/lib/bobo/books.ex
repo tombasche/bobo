@@ -5,6 +5,7 @@ defmodule Bobo.Books do
 
   alias Bobo.Books.Book
   alias Bobo.Repo
+  import Ecto.Query, only: [from: 2]
 
   @doc """
   Returns the list of books.
@@ -112,5 +113,16 @@ defmodule Bobo.Books do
   """
   def change_book(%Book{} = book, attrs \\ %{}) do
     Book.changeset(book, attrs)
+  end
+
+  def search_books(search_term) do
+    filters = [title: search_term]
+
+    query =
+      Enum.reduce(filters, Book, fn {key, value}, query ->
+        from(q in query, or_where: ilike(fragment("lower(?)", field(q, ^key)), ^"%#{value}%"))
+      end)
+
+    Repo.all(query)
   end
 end

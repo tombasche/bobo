@@ -15,6 +15,16 @@ defmodule BoboWeb.BooksResolver do
     end
   end
 
+  def search_books(_root, args, _info) do
+    case Books.search_books(args.search_term) do
+      books ->
+        {:ok, books}
+
+      _ ->
+        {:error, "No results"}
+    end
+  end
+
   def create_book(_root, args, _info) do
     case Books.create_book(args) do
       {:ok, book} ->
