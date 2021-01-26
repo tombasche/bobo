@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Book from '../data/Book';
 import { parseSimpleDate } from '../dateUtils/parse';
 import Card from './Card';
@@ -12,10 +12,13 @@ interface BookDisplayProps {
 }
 
 export default function BookDisplay({ book }: BookDisplayProps) {
+
+  const [showingDetail, isShowingDetail] = useState<boolean>(false);
+
   return (
-    <Card title={`${book.title} - ${book.author}`}>
+    <Card title={`${book.title} - ${book.author}`} onClick={() => isShowingDetail(true)}>
       <p> Rated: {Rating(book.rating)}</p>
-      {/* <p> {book.comments} </p> */}
+      {showingDetail ? <p> {book.comments} </p> : null}
       <p> Read: {parseSimpleDate(book.dateFinished)}</p>
       <CardFooter>
         <GenreDisplay genres={book.genres} />

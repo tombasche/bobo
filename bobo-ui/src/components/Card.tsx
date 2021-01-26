@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 interface CardProps {
     title: string
+    onClick: () => void
 }
 
 const CardDiv = styled.div`
@@ -21,8 +22,8 @@ const CardDiv = styled.div`
     }
 `;
 
-const Card: React.FC<CardProps> = ({ title, children }) => (
-    <CardDiv>
+const Card: React.FC<CardProps> = ({ title, onClick, children }) => (
+    <CardDiv onClick={onClick}>
         <h3>{title}</h3>
         {children}
     </CardDiv>
