@@ -7,6 +7,7 @@ export default interface Book {
     genres: string[]
     rating: number
     comments: string
+    updatedAt: string
 }
 
 const allBooksQuery = gql`
@@ -18,6 +19,7 @@ const allBooksQuery = gql`
       genres
       rating
       comments
+      updatedAt
     }
   }
 `;

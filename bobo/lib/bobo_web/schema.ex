@@ -12,6 +12,7 @@ defmodule BoboWeb.Schema do
     field(:date_finished, non_null(:string))
     field(:date_started, :string)
     field(:comments, :string)
+    field(:updated_at, :string)
   end
 
   input_object :update_book do
