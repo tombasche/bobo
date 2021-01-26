@@ -17,7 +17,8 @@ defmodule Bobo.Books do
 
   """
   def list_books do
-    Repo.all(Book)
+    query = from(b in Book, order_by: [desc: b.date_finished])
+    Repo.all(query)
   end
 
   @doc """

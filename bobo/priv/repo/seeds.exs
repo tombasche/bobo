@@ -6,7 +6,7 @@ alias Bobo.Books
   author: "Lucy Knisley",
   rating: 4.0,
   genres: ["non-fiction", "graphic novel", "food"],
-  date_finished: ~D[2019-04-20],
+  date_finished: ~D[2020-12-20],
   comments: "Great read!"
 })
 |> Books.create_book()

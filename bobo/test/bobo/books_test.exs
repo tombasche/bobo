@@ -47,6 +47,11 @@ defmodule Bobo.BooksTest do
       assert length(Books.list_books()) > 0
     end
 
+    test "list_books/0 orders books by latest first" do
+      [latest | rest] = Books.list_books()
+      assert Date.compare(latest.date_finished, List.first(rest).date_finished) == :gt
+    end
+
     test "get_book!/1 returns the book with given id" do
       book = book_fixture()
       assert Books.get_book!(book.id) == book
@@ -96,12 +101,12 @@ defmodule Bobo.BooksTest do
       assert %Ecto.Changeset{} = Books.change_book(book)
     end
 
-    test "search for a book by title returns something" do
+    test "search_books/1 by title returns something" do
       search_term = "king"
       assert length(Books.search_books(search_term)) == 1
     end
 
-    test "search for a book by author returns something" do
+    test "search_books/1 by author returns something" do
       search_term = "tolkien"
       assert length(Books.search_books(search_term)) == 1
     end
