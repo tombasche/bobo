@@ -1,7 +1,7 @@
 import React from 'react';
 import { diffDate } from '../dateUtils/diff';
 import { parseServerDate } from '../dateUtils/parse';
-import { SmallFont } from './SmallFont';
+import SmallFont from './SmallFont';
 
 interface DateDeltaDisplayProps {
     date: string

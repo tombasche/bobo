@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { titleCase } from '../stringUtils/titlecase';
-import { SmallFont } from './SmallFont';
+import SmallFont from './SmallFont';
 
 type Genres = string[]
 
