@@ -17,6 +17,8 @@ export const toEmoji = (rating: RatingNumber): string => {
     return emojiMap[rating];
 }
 
-export const Rating = (rating: RatingNumber) => {
+const Rating = (rating: RatingNumber) => {
     return <span>{toEmoji(rating)}</span>
 }
+
+export default Rating;

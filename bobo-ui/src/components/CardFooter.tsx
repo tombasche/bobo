@@ -8,8 +8,10 @@ const Footer = styled.div`
     align-items: center;
 `;
 
-export const CardFooter: React.FC<{}> = ({ children }) => (
+const CardFooter: React.FC<{}> = ({ children }) => (
     <Footer>
         {children}
     </Footer>
 );
+
+export default CardFooter;

@@ -8,6 +8,7 @@ export default interface Book {
     rating: number
     comments: string
     updatedAt: string
+    dateFinished: string
 }
 
 const allBooksQuery = gql`
@@ -20,6 +21,7 @@ const allBooksQuery = gql`
       rating
       comments
       updatedAt
+      dateFinished
     }
   }
 `;

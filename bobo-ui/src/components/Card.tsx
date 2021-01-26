@@ -21,9 +21,11 @@ const CardDiv = styled.div`
     }
 `;
 
-export const Card: React.FC<CardProps> = ({ title, children }) => (
+const Card: React.FC<CardProps> = ({ title, children }) => (
     <CardDiv>
         <h3>{title}</h3>
         {children}
     </CardDiv>
 );
+
+export default Card;
