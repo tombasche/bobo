@@ -126,7 +126,6 @@ defmodule Bobo.Books do
   """
   def search_books(search_term) do
     filters = Keyword.new([:title, :author], fn x -> {x, search_term} end)
-    IO.inspect(IEx.Info.info(filters))
 
     query =
       Enum.reduce(filters, Book, fn {key, value}, query ->

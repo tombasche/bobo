@@ -95,5 +95,15 @@ defmodule Bobo.BooksTest do
       book = book_fixture()
       assert %Ecto.Changeset{} = Books.change_book(book)
     end
+
+    test "search for a book by title returns something" do
+      search_term = "king"
+      assert length(Books.search_books(search_term)) == 1
+    end
+
+    test "search for a book by author returns something" do
+      search_term = "tolkien"
+      assert length(Books.search_books(search_term)) == 1
+    end
   end
 end
