@@ -13,11 +13,12 @@ const CardDiv = styled.div`
   padding: 12px;
   border-radius: 5px;
   background: #003c64;
+  cursor: pointer;
 
-  transition: 0.2s;
+  transition: 0.18s;
 
   &:hover {
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.5);
+    transform: scale(1.04);
   }
 `;
 
