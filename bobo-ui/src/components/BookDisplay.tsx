@@ -19,14 +19,19 @@ export default function BookDisplay({ book }: BookDisplayProps) {
     <Card
       title={`${book.title} - ${book.author}`}
       onClick={() => isShowingDetail(!showingDetail)}
+      expanded={showingDetail}
     >
-      <p> Rated: {Rating(book.rating)}</p>
-      {showingDetail ? <BookComments comments={book.comments} /> : null}
-      <p> Read: {parseSimpleDate(book.dateFinished)}</p>
-      <CardFooter>
-        <GenreDisplay genres={book.genres} />
-        <DateDeltaDisplay date={book.updatedAt} />
-      </CardFooter>
+      {showingDetail ? (
+        <div>
+          <p> Rated: {Rating(book.rating)}</p>
+          <BookComments comments={book.comments} />
+          <p> Read: {parseSimpleDate(book.dateFinished)}</p>
+          <CardFooter>
+            <GenreDisplay genres={book.genres} />
+            <DateDeltaDisplay date={book.updatedAt} />
+          </CardFooter>
+        </div>
+      ) : null}
     </Card>
   );
 }

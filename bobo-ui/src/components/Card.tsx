@@ -4,10 +4,15 @@ import styled from 'styled-components';
 interface CardProps {
   title: string;
   onClick: () => void;
+  expanded: boolean;
+}
+
+interface CardDivProps {
+  width: string;
 }
 
 const CardDiv = styled.div`
-  width: 450px;
+  width: ${(props: CardDivProps) => props.width};
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 12px;
@@ -22,8 +27,8 @@ const CardDiv = styled.div`
   }
 `;
 
-const Card: React.FC<CardProps> = ({ title, onClick, children }) => (
-  <CardDiv onClick={onClick}>
+const Card: React.FC<CardProps> = ({ title, onClick, expanded, children }) => (
+  <CardDiv onClick={onClick} width={expanded ? '600px' : '450px'}>
     <h3>{title}</h3>
     {children}
   </CardDiv>

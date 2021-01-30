@@ -8,7 +8,7 @@ const CenteredDiv = styled.div`
   display: flex;
   flex-flow: column;
   margin: auto;
-  width: 25%;
+  align-items: center;
 `;
 
 export const BookList: React.FC<BookListProps> = ({ children }) => (
