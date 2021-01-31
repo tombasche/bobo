@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Book from '../data/Book';
 import { parseSimpleDate } from '../dateUtils/parse';
 import BookComments from './BookComments';
+import BookTitle from './BookTitle';
 import Card from './Card';
 import CardFooter from './CardFooter';
 import DateDeltaDisplay from './DateDeltaDisplay';
@@ -17,7 +18,7 @@ export default function BookDisplay({ book }: BookDisplayProps) {
 
   return (
     <Card
-      title={`${book.title} - ${book.author}`}
+      title={<BookTitle book={book} />}
       onClick={() => isShowingDetail(!showingDetail)}
       expanded={showingDetail}
     >

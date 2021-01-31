@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface CardProps {
-  title: string;
+  title: React.ReactNode;
   onClick: () => void;
   expanded: boolean;
 }
@@ -29,7 +29,7 @@ const CardDiv = styled.div`
 
 const Card: React.FC<CardProps> = ({ title, onClick, expanded, children }) => (
   <CardDiv onClick={onClick} width={expanded ? '600px' : '450px'}>
-    <h3>{title}</h3>
+    {title}
     {children}
   </CardDiv>
 );
