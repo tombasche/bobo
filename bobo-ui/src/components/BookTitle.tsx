@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Book from '../data/Book';
+import { diffDate } from '../dateUtils/diff';
+import { parseSimpleDateToDate } from '../dateUtils/parse';
 
 interface BookTitleProps {
   book: Book;
@@ -21,7 +23,9 @@ const BookTitle = ({ book }: BookTitleProps) => {
   return (
     <TitleInfo>
       <Title>{`${book.title} - ${book.author}`}</Title>
-      <span>Added 3 days ago</span>
+      <span>
+        Added {diffDate(new Date(), parseSimpleDateToDate(book.dateFinished))}
+      </span>
     </TitleInfo>
   );
 };

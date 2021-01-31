@@ -35,6 +35,20 @@ test('Display a difference of two dates days apart', () => {
   expect(result).toEqual('2 days ago');
 });
 
+test('Display a difference of two dates months apart', () => {
+  const now = new Date(2021, 4, 1, 0, 0, 0);
+  const then = new Date(2021, 1, 1, 0, 0, 0);
+  const result = diffDate(now, then);
+  expect(result).toEqual('3 months ago');
+});
+
+test('Display a difference of two dates years apart', () => {
+  const now = new Date(2021, 1, 1, 0, 0, 0);
+  const then = new Date(2020, 1, 1, 0, 0, 0);
+  const result = diffDate(now, then);
+  expect(result).toEqual('1 year ago');
+});
+
 test('Round the result to the nearest unit', () => {
   const now = new Date(2020, 1, 1, 14, 30, 0);
   const then = new Date(2019, 12, 29, 14, 28, 92832);

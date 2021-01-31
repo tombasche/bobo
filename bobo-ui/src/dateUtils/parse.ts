@@ -8,3 +8,7 @@ export const parseSimpleDate = (d: string): string => {
   const date = DateTime.fromISO(d);
   return date.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
 };
+
+export const parseSimpleDateToDate = (d: string): Date => {
+  return DateTime.fromISO(d).toJSDate();
+};

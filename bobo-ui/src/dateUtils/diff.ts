@@ -16,7 +16,17 @@ export const diffDate = (now: Date, then: Date): string => {
     return `${rounded(hours)} hours ago`;
   }
 
-  return `${rounded(toDays(hours))} days ago`;
+  const days = toDays(hours);
+  if (days < 30) {
+    return `${rounded(days)} days ago`;
+  }
+
+  const months = rounded(toMonths(days));
+  if (months < 12) {
+    return `${months} month${months > 1 ? 's' : ''} ago`;
+  }
+  const years = rounded(toYears(months));
+  return `${years} year${years > 1 ? 's' : ''} ago`;
 };
 
 const toSeconds = (ms: number): number => {
@@ -35,6 +45,14 @@ const toDays = (h: number): number => {
   return h / 24;
 };
 
-const rounded = (n: number): string => {
-  return n.toFixed(0);
+const toMonths = (d: number): number => {
+  return d / 30;
+};
+
+const toYears = (m: number): number => {
+  return m / 12;
+};
+
+const rounded = (n: number): number => {
+  return Math.round(n);
 };
