@@ -28,7 +28,7 @@ const CardDiv = styled.div`
 `;
 
 const Card: React.FC<CardProps> = ({ title, onClick, expanded, children }) => (
-  <CardDiv onClick={onClick} width={expanded ? '600px' : '450px'}>
+  <CardDiv onClick={onClick} width={expanded ? '750px' : '600px'}>
     {title}
     {children}
   </CardDiv>
