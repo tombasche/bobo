@@ -1,9 +1,11 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 
+import { ReactComponent as SettingsImg } from '../images/settings.svg';
+
 export const Sidebar = () => {
   return (
-    <Menu styles={styles}>
+    <Menu right styles={styles} customBurgerIcon={<SettingsImg fill="white" />}>
       <a id="home" className="menu-item" href="/">
         Home
       </a>
@@ -17,10 +19,10 @@ export const Sidebar = () => {
 const styles = {
   bmBurgerButton: {
     position: 'fixed',
-    width: '36px',
-    height: '30px',
-    left: '36px',
-    top: '36px',
+    width: '42px',
+    height: '42px',
+    right: '42px',
+    top: '42px',
     outline: 'none',
   },
   bmBurgerBars: {
