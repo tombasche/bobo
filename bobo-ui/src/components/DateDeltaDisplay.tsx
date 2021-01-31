@@ -1,5 +1,5 @@
 import React from 'react';
-import { diffDate } from '../dateUtils/diff';
+import { dateDiffTilNow } from '../dateUtils/diff';
 import { parseServerDate } from '../dateUtils/parse';
 import SmallFont from './SmallFont';
 
@@ -10,7 +10,7 @@ interface DateDeltaDisplayProps {
 export default function DateDeltaDisplay({ date }: DateDeltaDisplayProps) {
   return (
     <SmallFont>
-      <p>Updated {diffDate(new Date(), parseServerDate(date))}</p>
+      <p>Updated {dateDiffTilNow(parseServerDate(date))}</p>
     </SmallFont>
   );
 }

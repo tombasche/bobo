@@ -1,4 +1,4 @@
-export const diffDate = (now: Date, then: Date): string => {
+export const dateDiff = (now: Date, then: Date): string => {
   const diff: number = now.getTime() - then.getTime();
   const seconds = Math.abs(toSeconds(diff));
   if (seconds < 60) {
@@ -55,4 +55,8 @@ const toYears = (m: number): number => {
 
 const rounded = (n: number): number => {
   return Math.round(n);
+};
+
+export const dateDiffTilNow = (then: Date): string => {
+  return dateDiff(new Date(), then);
 };
