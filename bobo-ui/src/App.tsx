@@ -4,13 +4,18 @@ import { ApolloProvider } from '@apollo/client';
 import { Books } from './containers/Books';
 import { client } from './query/ApolloClient';
 import { Sidebar } from './components/Sidebar';
+import Page from './components/Page';
+import NewBook from './containers/NewBook';
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <GlobalStyles />
       <Sidebar />
-      <div>{<Books />}</div>
+      <Page>
+        <NewBook />
+        <Books />
+      </Page>
     </ApolloProvider>
   );
 }
