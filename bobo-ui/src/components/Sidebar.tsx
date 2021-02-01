@@ -9,8 +9,8 @@ export const Sidebar = () => {
       <a id="home" className="menu-item" href="/">
         Home
       </a>
-      <a id="about" className="menu-item" href="/about">
-        About
+      <a id="sign-out" className="menu-item" href="/sign-out">
+        Sign out
       </a>
     </Menu>
   );
