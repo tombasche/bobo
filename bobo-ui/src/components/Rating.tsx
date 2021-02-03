@@ -1,5 +1,3 @@
-import React from 'react';
-
 type RatingNumber = number;
 
 interface EmojiMap {
