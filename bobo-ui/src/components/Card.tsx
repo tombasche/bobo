@@ -1,18 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 
-interface CardProps {
-  title: React.ReactNode;
-  onClick: () => void;
-  expanded: boolean;
-}
+type CardDivProps = {
+  expanded?: boolean;
+};
 
-interface CardDivProps {
-  width: string;
-}
-
-const CardDiv = styled.div`
-  width: ${(props: CardDivProps) => props.width};
+const BaseCardDiv = styled.div`
+  width: ${(props: { width: string }) => props.width};
   margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 12px;
@@ -26,12 +19,8 @@ const CardDiv = styled.div`
     transform: scale(1.04);
   }
 `;
-
-const Card: React.FC<CardProps> = ({ title, onClick, expanded, children }) => (
-  <CardDiv onClick={onClick} width={expanded ? '750px' : '600px'}>
-    {title}
-    {children}
-  </CardDiv>
+const CardDiv: React.FC<CardDivProps> = ({ expanded, children }) => (
+  <BaseCardDiv width={expanded ? '750px' : '600px'}>{children}</BaseCardDiv>
 );
 
-export default Card;
+export default CardDiv;

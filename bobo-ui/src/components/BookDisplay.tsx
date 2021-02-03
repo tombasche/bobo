@@ -3,7 +3,7 @@ import Book from '../data/Book';
 import { parseSimpleDate } from '../dateUtils/parse';
 import BookComments from './BookComments';
 import BookTitle from './BookTitle';
-import Card from './Card';
+import ClickableCard from './ClickableCard';
 import CardFooter from './CardFooter';
 import DateDeltaDisplay from './DateDeltaDisplay';
 import GenreDisplay from './GenreDisplay';
@@ -17,7 +17,7 @@ export default function BookDisplay({ book }: BookDisplayProps) {
   const [showingDetail, isShowingDetail] = useState<boolean>(false);
 
   return (
-    <Card
+    <ClickableCard
       title={<BookTitle book={book} />}
       onClick={() => isShowingDetail(!showingDetail)}
       expanded={showingDetail}
@@ -33,6 +33,6 @@ export default function BookDisplay({ book }: BookDisplayProps) {
           </CardFooter>
         </div>
       ) : null}
-    </Card>
+    </ClickableCard>
   );
 }
