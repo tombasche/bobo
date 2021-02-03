@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BaseCardDiv from '../components/BaseCard';
+import BaseCardDiv from './BaseCard';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,7 @@ const AddCaption = styled.span`
   padding-left: 8px;
 `;
 
-const NewBook = () => {
+const Add = () => {
   return (
     <NewCard width={'600px'}>
       <FontAwesomeIcon icon={faPlus} size="lg" />
@@ -25,4 +25,4 @@ const NewBook = () => {
   );
 };
 
-export default NewBook;
+export default Add;

@@ -5,7 +5,7 @@ import { Books } from './containers/Books';
 import { client } from './query/ApolloClient';
 import { Sidebar } from './components/Sidebar';
 import Page from './components/Page';
-import NewBook from './components/NewBook';
+import AddBook from './containers/AddBook';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <GlobalStyles />
       <Sidebar />
       <Page>
-        <NewBook />
+        <AddBook />
         <Books />
       </Page>
     </ApolloProvider>
