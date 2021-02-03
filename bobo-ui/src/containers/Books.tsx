@@ -4,11 +4,12 @@ import Book from '../types/Book';
 import { useAllBooks } from '../backend/book/queries';
 import BookDisplay from '../components/BookDisplay';
 import BookList from '../components/BookList';
+import Loading from '../components/Loading';
 
 export function Books() {
   const { loading, error, data } = useAllBooks();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error :(</p>;
 
   return (
