@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Book from '../data/Book';
+import Book from '../types/Book';
 import { dateDiffTilNow } from '../dateUtils/diff';
 import { parseSimpleDateToDate } from '../dateUtils/parse';
 

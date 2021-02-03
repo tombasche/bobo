@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Book from '../data/Book';
+import Book from '../types/Book';
 import { parseSimpleDate } from '../dateUtils/parse';
 import BookComments from './BookComments';
 import BookTitle from './BookTitle';

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Book, { useAllBooks } from '../data/Book';
+import Book from '../types/Book';
+import { useAllBooks } from '../backend/book/queries';
 import BookDisplay from '../components/BookDisplay';
 import BookList from '../components/BookList';
 
