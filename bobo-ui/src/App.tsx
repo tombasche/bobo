@@ -5,7 +5,7 @@ import { Books } from './containers/Books';
 import { client } from './query/ApolloClient';
 import { Sidebar } from './components/Sidebar';
 import Page from './components/Page';
-import NewBook from './containers/NewBook';
+import NewBook from './components/NewBook';
 
 function App() {
   return (
