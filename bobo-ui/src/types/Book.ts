@@ -8,3 +8,14 @@ export default interface Book {
   updatedAt: string;
   dateFinished: string;
 }
+
+export const blankBook: Book = {
+  id: 0,
+  title: '',
+  author: '',
+  genres: [],
+  rating: 0,
+  comments: '',
+  updatedAt: '',
+  dateFinished: '',
+}
