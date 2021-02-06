@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ModalDiv = styled.div`
   z-index: auto;
-  display: 'flex';
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,7 +30,7 @@ interface ModalProps {
   close: () => void;
 }
 
-const Modal = ({ title, isOpen, close }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ title, isOpen, close, children }) => {
   const useCloseOnOutsideClick = (ref: RefObject<HTMLDivElement>) => {
     useEffect(() => {
       function handleClickOutside(event: { target: any }) {
@@ -52,6 +52,7 @@ const Modal = ({ title, isOpen, close }: ModalProps) => {
     <ModalDiv>
       <Container ref={wrapperRef}>
         <h2>{title}</h2>
+        {children}
       </Container>
     </ModalDiv>
   ) : null;
