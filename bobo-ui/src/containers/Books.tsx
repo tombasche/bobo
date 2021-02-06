@@ -5,12 +5,13 @@ import { useAllBooks } from '../backend/book/queries';
 import BookDisplay from '../components/BookDisplay';
 import BookList from '../components/BookList';
 import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 export function Books() {
   const { loading, error, data } = useAllBooks();
 
   if (loading) return <Loading />;
-  if (error) return <p>Error :(</p>;
+  if (error) return <Error />;
 
   return (
     <BookList>
