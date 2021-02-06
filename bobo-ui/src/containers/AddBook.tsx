@@ -8,7 +8,11 @@ const AddBook = () => {
   return (
     <>
       <Add open={() => setModalIsOpen(true)} />
-      <Modal title="Add Book" isOpen={modalIsOpen} />
+      <Modal
+        title="Add Book"
+        isOpen={modalIsOpen}
+        close={() => setModalIsOpen(false)}
+      />
     </>
   );
 };

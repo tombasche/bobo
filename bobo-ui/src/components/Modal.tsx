@@ -1,9 +1,5 @@
+import { RefObject, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-
-interface ModalProps {
-  title: string;
-  isOpen: boolean;
-}
 
 const ModalDiv = styled.div`
   z-index: auto;
@@ -28,12 +24,37 @@ const Container = styled.div`
   color: #001e32;
 `;
 
-export default function Modal({ title, isOpen }: ModalProps) {
+interface ModalProps {
+  title: string;
+  isOpen: boolean;
+  close: () => void;
+}
+
+const Modal = ({ title, isOpen, close }: ModalProps) => {
+  const useCloseOnOutsideClick = (ref: RefObject<HTMLDivElement>) => {
+    useEffect(() => {
+      function handleClickOutside(event: { target: any }) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          close();
+        }
+      }
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    });
+  };
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  useCloseOnOutsideClick(wrapperRef);
+
   return isOpen ? (
     <ModalDiv>
-      <Container>
+      <Container ref={wrapperRef}>
         <h2>{title}</h2>
       </Container>
     </ModalDiv>
   ) : null;
-}
+};
+
+export default Modal;
