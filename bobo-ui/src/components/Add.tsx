@@ -16,9 +16,13 @@ const AddCaption = styled.span`
   padding-left: 8px;
 `;
 
-const Add = () => {
+interface AddProps {
+  open: () => void;
+}
+
+const Add = ({ open }: AddProps) => {
   return (
-    <NewCard width={'600px'}>
+    <NewCard width={'600px'} onClick={open}>
       <FontAwesomeIcon icon={faPlus} size="lg" />
       <AddCaption>Add</AddCaption>
     </NewCard>
