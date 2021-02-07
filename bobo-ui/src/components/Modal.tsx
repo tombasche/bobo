@@ -22,6 +22,14 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
   background-color: white;
   color: #001e32;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+`;
+
+const ModalTitle = styled.h2`
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
 interface ModalProps {
@@ -51,7 +59,7 @@ const Modal: React.FC<ModalProps> = ({ title, isOpen, close, children }) => {
   return isOpen ? (
     <ModalDiv>
       <Container ref={wrapperRef}>
-        <h2>{title}</h2>
+        <ModalTitle>{title}</ModalTitle>
         {children}
       </Container>
     </ModalDiv>
