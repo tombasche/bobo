@@ -11,14 +11,20 @@ const BookForm = styled.form`
 interface NewBookProps {
   book: Book;
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
+  change: (e: React.ChangeEvent<HTMLInputElement>, field: string) => void;
 }
 
-const NewBookForm = ({ book, submit }: NewBookProps) => {
+const NewBookForm = ({ book, submit, change }: NewBookProps) => {
   return (
     <BookForm onSubmit={(e) => submit(e, book)}>
       <label>
         Title
-        <input type="text" name="title" value={book.title} />
+        <input
+          type="text"
+          name="title"
+          value={book.title}
+          onChange={(e) => change(e, 'title')}
+        />
       </label>
       <input type="submit" value="Submit" />
     </BookForm>
