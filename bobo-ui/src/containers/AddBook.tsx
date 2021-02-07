@@ -21,14 +21,15 @@ const AddBook = () => {
     setBook(updatedBook);
   };
 
+  const onClose = () => {
+    setModalIsOpen(false);
+    setBook(blankBook);
+  };
+
   return (
     <>
       <Add open={() => setModalIsOpen(true)} />
-      <Modal
-        title="Add Book"
-        isOpen={modalIsOpen}
-        close={() => setModalIsOpen(false)}
-      >
+      <Modal title="Add Book" isOpen={modalIsOpen} close={onClose}>
         <NewBookForm book={book} submit={createBook} change={updateBook} />
       </Modal>
     </>
