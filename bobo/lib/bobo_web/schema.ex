@@ -52,6 +52,7 @@ defmodule BoboWeb.Schema do
       arg(:date_finished, non_null(:string))
       arg(:genres, non_null(list_of(:string)))
       arg(:rating, non_null(:float))
+      arg(:comments, :string)
 
       resolve(&BooksResolver.create_book/3)
     end
