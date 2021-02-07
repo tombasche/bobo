@@ -10,8 +10,9 @@ const AddBook = () => {
 
   const createBook = (e: React.FormEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();
-    // need to remove default 'id' field before submitting
+    // need to remove default 'id' field and 'updatedAt' before submitting
     console.log(b);
+    reset();
   };
 
   const updateBook = (
@@ -22,7 +23,7 @@ const AddBook = () => {
     setBook(updatedBook);
   };
 
-  const onClose = () => {
+  const reset = () => {
     setModalIsOpen(false);
     setBook(blankBook);
   };
@@ -30,7 +31,7 @@ const AddBook = () => {
   return (
     <>
       <Add open={() => setModalIsOpen(true)} />
-      <Modal title="Add Book" isOpen={modalIsOpen} close={onClose}>
+      <Modal title="Add Book" isOpen={modalIsOpen} close={reset}>
         <NewBookForm book={book} submit={createBook} change={updateBook} />
       </Modal>
     </>
