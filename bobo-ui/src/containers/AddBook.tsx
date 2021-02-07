@@ -10,7 +10,8 @@ const AddBook = () => {
 
   const createBook = (e: React.FormEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();
-    // TODO send to backend
+    // need to remove default 'id' field before submitting
+    console.log(b);
   };
 
   const updateBook = (

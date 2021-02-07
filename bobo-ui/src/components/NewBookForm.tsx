@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Book from '../types/Book';
+import BookInputField from './BookInputField';
 
 const BookForm = styled.form`
   display: flex;
@@ -19,12 +20,11 @@ const NewBookForm = ({ book, submit, change }: NewBookProps) => {
     <BookForm onSubmit={(e) => submit(e, book)}>
       <label>
         Title
-        <input
-          type="text"
-          name="title"
-          value={book.title}
-          onChange={(e) => change(e, 'title')}
-        />
+        <BookInputField name="title" value={book.title} change={change} />
+      </label>
+      <label>
+        Author
+        <BookInputField name="author" value={book.author} change={change} />
       </label>
       <input type="submit" value="Submit" />
     </BookForm>
