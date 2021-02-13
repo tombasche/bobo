@@ -16,7 +16,9 @@ export const validate = (b: NewBook): Result<NewBook, ValidFields> => {
     return  {ok: true, value: b};
 }
 
-const hasField = (b: NewBook, field: string): boolean => {
+type KeyableNewBook = NewBook & {[key: string]: string | number | string[]}
+
+const hasField = (b: KeyableNewBook, field: string): boolean => {
     return b.hasOwnProperty(field) && !!(b[field]);
 } 
 
