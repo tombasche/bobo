@@ -20,7 +20,7 @@ export const useAllBooks = () => useQuery(allBooksQuery);
 const createBookQuery = gql`
 mutation createBook($title: String!, $author: String!, $genres: [String]!, $rating: Float!, $comments: String, $dateFinished: String!) {
   createBook(title: $title, author:$author, genres: $genres, rating: $rating, comments: $comments, dateFinished: $dateFinished) {
-    id 
+    id
     title
     author
     rating
