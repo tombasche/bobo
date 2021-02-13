@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Book from '../types/Book';
 import BookInputField from './BookInputField';
+import BookMultiSelectField from './BookMultiSelectField';
 import BookSelectField from './BookSelectField';
 
 const BookForm = styled.form`
@@ -13,7 +14,7 @@ const BookForm = styled.form`
 interface NewBookProps {
   book: Book;
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
-  change: (e: React.ChangeEvent<HTMLElement>, field: string) => void;
+  change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
 }
 
 const NewBookForm = ({ book, submit, change }: NewBookProps) => {
@@ -33,6 +34,15 @@ const NewBookForm = ({ book, submit, change }: NewBookProps) => {
           name="rating"
           value={book.rating.toString()}
           options={['1', '2', '3', '4']}
+          change={change}
+        />
+      </label>
+      <label>
+        Genres
+        <BookMultiSelectField
+          name="genres"
+          values={book.genres}
+          options={['Fantasy', 'Action', 'Non-fiction']}
           change={change}
         />
       </label>

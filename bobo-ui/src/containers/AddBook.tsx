@@ -11,7 +11,7 @@ const AddBook = () => {
   const [book, setBook] = React.useState<Book>(blankBook);
   const [addBook] = useCreateBook();
 
-  const createBook = (e: React.FormEvent<HTMLFormElement>, b: Book) => {
+  const createBook = (e: React.SyntheticEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();
     const result = validate(clean(b));
     if (!result.ok) return;
@@ -20,7 +20,6 @@ const AddBook = () => {
   };
 
   const updateBook = (e: SyntheticEvent, field: string) => {
-    console.log(e, field);
     const updatedBook = {
       ...book,
       [field]: (e.target as HTMLInputElement).value,

@@ -1,7 +1,7 @@
 interface BookInputFieldProps {
   name: string;
   value: string;
-  change: (e: React.ChangeEvent<HTMLInputElement>, field: string) => void;
+  change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
 }
 
 const BookInputField = ({ name, value, change }: BookInputFieldProps) => {

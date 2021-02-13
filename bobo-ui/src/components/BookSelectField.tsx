@@ -2,7 +2,7 @@ interface BookSelectFieldProps {
   name: string;
   value: string;
   options: string[];
-  change: (e: React.ChangeEvent<HTMLSelectElement>, field: string) => void;
+  change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
 }
 
 const BookSelectField = ({
