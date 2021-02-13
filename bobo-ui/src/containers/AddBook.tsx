@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { clean, validate } from '../backend/book/validate';
 import { useCreateBook } from '../backend/book/queries';
 import Add from '../components/Add';
@@ -19,11 +19,12 @@ const AddBook = () => {
     reset();
   };
 
-  const updateBook = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    field: string,
-  ) => {
-    const updatedBook = { ...book, [field]: e.currentTarget.value };
+  const updateBook = (e: SyntheticEvent, field: string) => {
+    console.log(e, field);
+    const updatedBook = {
+      ...book,
+      [field]: (e.target as HTMLInputElement).value,
+    };
     setBook(updatedBook);
   };
 
