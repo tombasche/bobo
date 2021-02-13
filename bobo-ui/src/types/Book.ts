@@ -25,7 +25,7 @@ export const blankBook: Book = {
   title: '',
   author: '',
   genres: [],
-  rating: 0,
+  rating: 1,
   comments: '',
   updatedAt: '',
   dateFinished: '',
