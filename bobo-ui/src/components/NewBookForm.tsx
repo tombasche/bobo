@@ -4,11 +4,18 @@ import Book from '../types/Book';
 import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';
 import BookSelectField from './BookSelectField';
+import SubmitButton from './SubmitButton';
 
 const BookForm = styled.form`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+  width: 100%;
+`;
+
+const Field = styled.div``;
+const Label = styled.label`
+  padding-right: 5px;
 `;
 
 interface NewBookProps {
@@ -20,33 +27,33 @@ interface NewBookProps {
 const NewBookForm = ({ book, submit, change }: NewBookProps) => {
   return (
     <BookForm onSubmit={(e) => submit(e, book)}>
-      <label>
-        Title
+      <Field>
+        <Label>Title</Label>
         <BookInputField name="title" value={book.title} change={change} />
-      </label>
-      <label>
-        Author
+      </Field>
+      <Field>
+        <Label>Author</Label>
         <BookInputField name="author" value={book.author} change={change} />
-      </label>
-      <label>
-        Rating
+      </Field>
+      <Field>
+        <Label>Rating</Label>
         <BookSelectField
           name="rating"
           value={book.rating.toString()}
           options={['1', '2', '3', '4']}
           change={change}
         />
-      </label>
-      <label>
-        Genres
+      </Field>
+      <Field>
+        <Label>Genres</Label>
         <BookMultiSelectField
           name="genres"
           values={book.genres}
           options={['Fantasy', 'Action', 'Non-fiction']}
           change={change}
         />
-      </label>
-      <input type="submit" value="Submit" />
+      </Field>
+      <SubmitButton />
     </BookForm>
   );
 };
