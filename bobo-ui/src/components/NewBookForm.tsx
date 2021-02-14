@@ -13,7 +13,10 @@ const BookForm = styled.form`
   width: 100%;
 `;
 
-const Field = styled.div``;
+const Field = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Label = styled.label`
   padding-right: 5px;
 `;

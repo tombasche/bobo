@@ -1,5 +1,6 @@
 import React from 'react';
 import Select, { ValueType } from 'react-select';
+import styled from 'styled-components';
 
 interface BookMultiSelectFieldProps {
   name: string;
@@ -17,6 +18,10 @@ type IsMulti = true;
 const valueToOptionsObject = (v: string) => {
   return { value: v.toLowerCase(), label: v };
 };
+
+const Container = styled.span`
+  min-width: 12em;
+`;
 
 const BookMultiSelectField = ({
   name,
@@ -37,12 +42,14 @@ const BookMultiSelectField = ({
   };
 
   return (
-    <Select
-      isMulti
-      value={values.map(valueToOptionsObject)}
-      onChange={(option) => handleChange(option)}
-      options={options.map(valueToOptionsObject)}
-    />
+    <Container>
+      <Select
+        isMulti
+        value={values.map(valueToOptionsObject)}
+        onChange={(option) => handleChange(option)}
+        options={options.map(valueToOptionsObject)}
+      />
+    </Container>
   );
 };
 
