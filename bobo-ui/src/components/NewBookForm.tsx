@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Book from '../types/Book';
 import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';
-import BookSelectField from './BookSelectField';
+import SelectRating from './SelectRating';
 import SubmitButton from './SubmitButton';
 
 const BookForm = styled.form`
@@ -40,10 +40,9 @@ const NewBookForm = ({ book, submit, change }: NewBookProps) => {
       </Field>
       <Field>
         <Label>Rating</Label>
-        <BookSelectField
+        <SelectRating
           name="rating"
           value={book.rating.toString()}
-          options={['1', '2', '3', '4']}
           change={change}
         />
       </Field>
