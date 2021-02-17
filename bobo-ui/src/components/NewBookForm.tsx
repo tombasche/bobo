@@ -10,6 +10,7 @@ const BookForm = styled.form`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+  height: 100%;
 `;
 
 const Field = styled.div`
@@ -22,8 +23,14 @@ const Fields = styled.div`
   align-items: flex-start;
   flex-flow: column;
 `;
+
 const Label = styled.label`
   padding-right: 5px;
+`;
+
+const BottomLeft = styled.div`
+  position: absolute;
+  top: 85%;
 `;
 
 interface NewBookProps {
@@ -62,7 +69,9 @@ const NewBookForm = ({ book, submit, change }: NewBookProps) => {
           />
         </Field>
       </Fields>
-      <SubmitButton />
+      <BottomLeft>
+        <SubmitButton />
+      </BottomLeft>
     </BookForm>
   );
 };

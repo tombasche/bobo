@@ -6,11 +6,11 @@ const SubmitInput = styled.input`
 
   cursor: pointer;
   color: white;
-  padding: 6px;
-  border-radius: 2px;
+  padding: 0.7em 1.2em 0.7em 1.2em;
+  border-radius: 4px;
+  font-size: 0.9em;
 
   transition: 0.18s;
-
   &:hover {
     transform: scale(1.04);
   }
