@@ -1,4 +1,4 @@
-export const RatingOptions = ['1', '2', '3', '4'];
+import { emojiMap } from './Rating';
 
 interface SelectRatingProps {
   name: string;
@@ -9,7 +9,7 @@ interface SelectRatingProps {
 const SelectRating = ({ name, value, change }: SelectRatingProps) => {
   return (
     <select value={value} onChange={(e) => change(e, name)}>
-      {RatingOptions.map((e) => {
+      {Object.keys(emojiMap).map((e) => {
         return (
           <option key={e} value={e}>
             {e}
