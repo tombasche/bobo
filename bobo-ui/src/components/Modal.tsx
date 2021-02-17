@@ -7,14 +7,14 @@ const ModalDiv = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 `;
 
 const Container = styled.div`
   position: fixed;
-  width: 60%;
+  width: 20%;
   height: 50%;
   padding: 2em;
   top: 50%;
