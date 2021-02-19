@@ -3,8 +3,8 @@ import { graphql } from 'msw';
 export const ALL_BOOKS_QUERY = graphql.query(
   'allBooks',
   async (req, res, ctx) => {
-    await new Promise((r) => setTimeout(r, 2000));
     return res(
+      ctx.delay(),
       ctx.data({
         allBooks: [
           {
