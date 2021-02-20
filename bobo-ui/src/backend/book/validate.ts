@@ -26,9 +26,20 @@ const validateBook = (b: NewBook): ValidFields => {
 type KeyableNewBook = NewBook & {[key: string]: string | number | string[]};
 
 const hasField = (b: KeyableNewBook, field: string): boolean => {
-    return b.hasOwnProperty(field) && !!(b[field]);
+    const value = b[field];
+    let fieldExists = b.hasOwnProperty(field) && !!(value);
+    if(isStringArray(value)) fieldExists = fieldExists && containsValues(value)
+    return fieldExists
 };
+
+const containsValues = (v: string[] | string | number): boolean => {
+    return typeof v === "object" && v.length > 0
+}
 
 const isValid = (f: ValidFields): boolean => {
     return Object.values(f).every((b) => b)
 };
+
+const isStringArray = (v: string[] | string | number): v is string[] => {
+    return typeof v === "object";
+}

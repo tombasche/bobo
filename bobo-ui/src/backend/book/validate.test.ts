@@ -55,3 +55,22 @@ test('An invalid book returns an "error" response', () => {
     }}
     expect(validate(expectedBook)).toEqual(errorResult);
 })
+
+test('No genres specified is an "error"', () => {
+    const expectedBook = {
+        author: 'Stephenie Meyer',
+        genres: [],
+        rating: 1,
+        comments: '',
+        dateFinished: '2020-01-01',
+        title: ""
+    }
+    const errorResult = {ok: false, message: {
+        author: true,
+        genres: false,
+        rating: true,
+        dateFinished: true,
+        title: false
+    }}
+    expect(validate(expectedBook)).toEqual(errorResult);
+})
