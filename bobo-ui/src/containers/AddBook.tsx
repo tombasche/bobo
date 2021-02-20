@@ -6,10 +6,11 @@ import Modal from '../components/Modal';
 import NewBookForm from '../components/NewBookForm';
 import Book, { blankBook } from '../types/Book';
 import any from '../helpers/Any';
+import { useValidationErrors } from '../backend/book/formValidation';
 
 const AddBook = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
-  const [validationErrors, setValidationErrors] = React.useState({});
+  const [validationErrors, setValidationErrors] = useValidationErrors();
   const [book, setBook] = React.useState<Book>(blankBook);
   const [addBook] = useCreateBook();
 

@@ -27,3 +27,16 @@ test('Creating a book without all fields leaves the modal open', () => {
   fireEvent.submit(screen.getByRole('button'));
   expect(screen.getByText(/Add Book/));
 });
+
+test('Creating a book without all fields pops up an error message', () => {
+  render(node);
+  fireEvent(
+    screen.getByText(/Add/),
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  );
+  fireEvent.submit(screen.getByRole('button'));
+  expect(screen.getByText(/Oh no/));
+});
