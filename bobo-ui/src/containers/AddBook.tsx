@@ -36,6 +36,7 @@ const AddBook = () => {
   const reset = () => {
     setModalIsOpen(false);
     setBook(blankBook);
+    setValidationErrors({});
   };
 
   return (
