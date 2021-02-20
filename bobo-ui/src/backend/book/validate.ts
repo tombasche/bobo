@@ -1,5 +1,6 @@
 import {Result} from "../../types/Result";
 import Book, {NewBook, RequiredBookFields} from "../../types/Book";
+import all from "../../helpers/All";
 
 export const clean = (b: Book) => {
     const {id, updatedAt, ...rest} = b;
@@ -12,7 +13,7 @@ interface ValidFields {
 
 export const validate = (b: NewBook): Result<NewBook, ValidFields> => {
     const message = validateBook(b)
-    if (!isValid(message)) return {ok: false, message}
+    if (!all<ValidFields>(message)) return {ok: false, message}
     return  {ok: true, value: b};
 };
 
@@ -35,10 +36,6 @@ const hasField = (b: KeyableNewBook, field: string): boolean => {
 const containsValues = (v: string[] | string | number): boolean => {
     return typeof v === "object" && v.length > 0
 }
-
-const isValid = (f: ValidFields): boolean => {
-    return Object.values(f).every((b) => b)
-};
 
 const isStringArray = (v: string[] | string | number): v is string[] => {
     return typeof v === "object";
