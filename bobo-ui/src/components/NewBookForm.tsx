@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ValidFields } from '../backend/book/validate';
 import Book from '../types/Book';
 import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';
@@ -37,19 +38,30 @@ interface NewBookProps {
   book: Book;
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
   change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
+  errors: ValidFields;
 }
 
-const NewBookForm = ({ book, submit, change }: NewBookProps) => {
+const NewBookForm = ({ book, submit, change, errors }: NewBookProps) => {
   return (
     <BookForm onSubmit={(e) => submit(e, book)}>
       <Fields>
         <Field>
           <Label>Title</Label>
-          <BookInputField name="title" value={book.title} change={change} />
+          <BookInputField
+            name="title"
+            value={book.title}
+            change={change}
+            error={false}
+          />
         </Field>
         <Field>
           <Label>Author</Label>
-          <BookInputField name="author" value={book.author} change={change} />
+          <BookInputField
+            name="author"
+            value={book.author}
+            change={change}
+            error={false}
+          />
         </Field>
         <Field>
           <Label>Rating</Label>

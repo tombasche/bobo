@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
 
 import { server } from '../mocks/server';

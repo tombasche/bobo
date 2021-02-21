@@ -45,7 +45,12 @@ const AddBook = () => {
       <Add open={() => setModalIsOpen(true)} />
       <Modal title="Add Book" isOpen={modalIsOpen} close={reset}>
         {any(validationErrors) && <FormErrorMessage />}
-        <NewBookForm book={book} submit={createBook} change={updateBook} />
+        <NewBookForm
+          book={book}
+          submit={createBook}
+          change={updateBook}
+          errors={validationErrors}
+        />
       </Modal>
     </>
   );

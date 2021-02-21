@@ -1,12 +1,22 @@
+import styled from 'styled-components';
+
 interface BookInputFieldProps {
   name: string;
   value: string;
   change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
+  error: boolean;
 }
 
-const BookInputField = ({ name, value, change }: BookInputFieldProps) => {
+const Input = styled.input``;
+
+const BookInputField = ({
+  name,
+  value,
+  change,
+  error,
+}: BookInputFieldProps) => {
   return (
-    <input
+    <Input
       type="text"
       name={name}
       value={value}
