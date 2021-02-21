@@ -8,7 +8,11 @@ interface SelectRatingProps {
 
 const SelectRating = ({ name, value, change }: SelectRatingProps) => {
   return (
-    <select value={value} onChange={(e) => change(e, name)}>
+    <select
+      aria-labelledby={name}
+      value={value}
+      onChange={(e) => change(e, name)}
+    >
       {Object.keys(emojiMap).map((e) => {
         return (
           <option key={e} value={e}>

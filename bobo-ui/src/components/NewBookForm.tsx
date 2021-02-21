@@ -59,7 +59,7 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
           />
         </Field>
         <Field>
-          <Label>Author</Label>
+          <Label htmlFor="author">Author</Label>
           <BookInputField
             name="author"
             value={book.author}
@@ -68,7 +68,7 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
           />
         </Field>
         <Field>
-          <Label>Rating</Label>
+          <Label htmlFor="rating">Rating</Label>
           <SelectRating
             name="rating"
             value={book.rating.toString()}
