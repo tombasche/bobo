@@ -9,9 +9,19 @@ interface BookInputFieldProps {
 
 const Input = styled.input`
   border: ${(props: { error: boolean }) =>
-    props.error ? '1px solid red' : '1px solid black'};
+    props.error ? '1px solid red' : '1px solid #001e32'};
   box-shadow: ${(props: { error: boolean }) =>
     props.error ? '0 0 5px red' : ''};
+  line-height: 1.75em;
+  padding-left: 3px;
+  border-radius: 3px;
+
+  transition: 0.18s;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 3px #0060a0;
+  }
 `;
 
 const BookInputField = ({

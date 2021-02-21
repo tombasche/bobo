@@ -15,7 +15,7 @@ const ModalDiv = styled.div`
 const Container = styled.div`
   position: fixed;
   width: 20%;
-  height: 50%;
+  height: 70%;
   padding: 2em;
   top: 50%;
   left: 50%;

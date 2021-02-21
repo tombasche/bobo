@@ -16,17 +16,21 @@ const BookForm = styled.form`
 
 const Field = styled.div`
   display: flex;
-  align-items: center;
+  flex-flow: column;
+  margin: 0 0 5px 5px;
+  width: 100%;
 `;
 
 const Fields = styled.div`
   display: flex;
-  align-items: flex-start;
   flex-flow: column;
+  width: 100%;
 `;
 
 const Label = styled.label`
-  padding-right: 5px;
+  margin-bottom: 0.4em;
+  font-weight: 500;
+  color: #001e32;
 `;
 
 const BottomLeft = styled.div`
