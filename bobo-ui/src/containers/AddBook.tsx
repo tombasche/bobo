@@ -7,6 +7,7 @@ import NewBookForm from '../components/NewBookForm';
 import Book, { blankBook } from '../types/Book';
 import any from '../helpers/Any';
 import { useValidationErrors } from '../backend/book/formValidation';
+import { FormErrorMessage } from '../components/FormErrorMessage';
 
 const AddBook = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
@@ -43,7 +44,7 @@ const AddBook = () => {
     <>
       <Add open={() => setModalIsOpen(true)} />
       <Modal title="Add Book" isOpen={modalIsOpen} close={reset}>
-        {any(validationErrors) && <p>Oh no</p>}
+        {any(validationErrors) && <FormErrorMessage />}
         <NewBookForm book={book} submit={createBook} change={updateBook} />
       </Modal>
     </>

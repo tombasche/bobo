@@ -38,5 +38,5 @@ test('Creating a book without all fields pops up an error message', () => {
     }),
   );
   fireEvent.submit(screen.getByRole('button'));
-  expect(screen.getByText(/Oh no/));
+  expect(screen.getByText(/There's a few things missing.../));
 });
