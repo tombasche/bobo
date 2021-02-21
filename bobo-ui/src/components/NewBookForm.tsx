@@ -76,12 +76,13 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
           />
         </Field>
         <Field>
-          <Label>Genres</Label>
+          <Label htmlFor="genres">Genres</Label>
           <BookMultiSelectField
             name="genres"
             values={book.genres}
             options={['Fantasy', 'Action', 'Non-fiction']}
             change={change}
+            error={hasError(validFields, 'genres')}
           />
         </Field>
       </Fields>

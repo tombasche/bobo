@@ -4,6 +4,7 @@ import {
   fireEvent,
   screen,
   getByLabelText,
+  getByRole,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
@@ -21,8 +22,7 @@ const node = (
   </MockedProvider>
 );
 
-test('Creating a book without all fields leaves the modal open', () => {
-  render(node);
+const clickAdd = () => {
   fireEvent(
     screen.getByText(/Add/),
     new MouseEvent('click', {
@@ -30,49 +30,46 @@ test('Creating a book without all fields leaves the modal open', () => {
       cancelable: true,
     }),
   );
+};
+
+const submitForm = () => {
   fireEvent.submit(screen.getByRole('button'));
+};
+
+test('Creating a book without all fields leaves the modal open', () => {
+  render(node);
+  clickAdd();
+  submitForm();
   expect(screen.getByText(/Add Book/));
 });
 
 test('Creating a book without all fields pops up an error message', () => {
   render(node);
-  fireEvent(
-    screen.getByText(/Add/),
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  );
-  fireEvent.submit(screen.getByRole('button'));
+  clickAdd();
+  submitForm();
   expect(screen.getByText(/missing/));
 });
 
 test('Creating a book without all fields, highlights those fields', () => {
   render(node);
-  fireEvent(
-    screen.getByText(/Add/),
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  );
-  fireEvent.submit(screen.getByRole('button'));
+  clickAdd();
+  submitForm();
   const container = screen.getByText(/Add Book/).closest('div');
-  expect(getByLabelText(container!, 'title')).toHaveStyle(`
-    border: 1px solid red;
-    box-shadow: 0 0 5px red;
+
+  const expectToHaveStyle = (label: string) => {
+    expect(getByLabelText(container!, label)).toHaveStyle(`
+      border: 1px solid red;
+      box-shadow: 0 0 5px red;
   `);
+  };
+
+  expectToHaveStyle('title');
+  expectToHaveStyle('author');
 });
 
 test('Opening the modal doesnt cause fields to be highlighted', () => {
   render(node);
-  fireEvent(
-    screen.getByText(/Add/),
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  );
+  clickAdd();
   const container = screen.getByText(/Add Book/).closest('div');
   expect(getByLabelText(container!, 'title')).not.toHaveStyle(`
     border: 1px solid red;

@@ -7,6 +7,7 @@ interface BookMultiSelectFieldProps {
   values: string[];
   options: string[];
   change: (e: React.SyntheticEvent<any>, field: string) => void;
+  error: boolean;
 }
 type OptionType = {
   value: string;
@@ -28,6 +29,7 @@ const BookMultiSelectField = ({
   values,
   options,
   change,
+  error,
 }: BookMultiSelectFieldProps) => {
   const handleChange = (selectedOptions: ValueType<OptionType, IsMulti>) => {
     if (!selectedOptions) return;
@@ -42,12 +44,26 @@ const BookMultiSelectField = ({
   };
 
   return (
-    <Container>
+    <Container data-testid={name}>
       <Select
+        styles={{
+          control: (provided) =>
+            error
+              ? {
+                  ...provided,
+                  border: '1px solid red',
+                  boxShadow: '0 0 5px red',
+                }
+              : provided,
+        }}
         isMulti
         value={values.map(valueToOptionsObject)}
         onChange={(option) => handleChange(option)}
         options={options.map(valueToOptionsObject)}
+        aria-label={name}
+        aria-labelledby={name}
+        aria-required="true"
+        title={name}
       />
     </Container>
   );
