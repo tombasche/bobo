@@ -13,7 +13,11 @@ const MessageDiv = styled.div`
 `;
 
 const Message = ({ message }: MessageProps) => {
-  return <MessageDiv>{message}</MessageDiv>;
+  return (
+    <MessageDiv>
+      <em>{message}</em>
+    </MessageDiv>
+  );
 };
 
 export default Message;
