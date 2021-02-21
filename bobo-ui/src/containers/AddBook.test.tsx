@@ -63,3 +63,19 @@ test('Creating a book without all fields, highlights those fields', () => {
     box-shadow: 0 0 5px red;
   `);
 });
+
+test('Opening the modal doesnt cause fields to be highlighted', () => {
+  render(node);
+  fireEvent(
+    screen.getByText(/Add/),
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  );
+  const container = screen.getByText(/Add Book/).closest('div');
+  expect(getByLabelText(container!, 'title')).not.toHaveStyle(`
+    border: 1px solid red;
+    box-shadow: 0 0 5px red;
+  `);
+});

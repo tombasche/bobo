@@ -41,6 +41,10 @@ interface NewBookProps {
   validFields: ValidFields;
 }
 
+const hasError = (validFields: ValidFields, field: string): boolean => {
+  return validFields.title !== undefined && !validFields.title;
+};
+
 const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
   return (
     <BookForm onSubmit={(e) => submit(e, book)}>
@@ -51,7 +55,7 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
             name="title"
             value={book.title}
             change={change}
-            error={!validFields.title}
+            error={hasError(validFields, 'title')}
           />
         </Field>
         <Field>
@@ -60,7 +64,7 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
             name="author"
             value={book.author}
             change={change}
-            error={!validFields.author}
+            error={hasError(validFields, 'author')}
           />
         </Field>
         <Field>
