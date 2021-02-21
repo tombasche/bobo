@@ -1,6 +1,7 @@
 import React from 'react';
 import Select, { ValueType } from 'react-select';
 import styled from 'styled-components';
+import { synthesiseEvent } from '../helpers/Event';
 
 interface BookMultiSelectFieldProps {
   name: string;
@@ -33,13 +34,11 @@ const BookMultiSelectField = ({
 }: BookMultiSelectFieldProps) => {
   const handleChange = (selectedOptions: ValueType<OptionType, IsMulti>) => {
     if (!selectedOptions) return;
-    const event = ({
-      target: {
-        value: selectedOptions.map((o) => {
-          return o.label;
-        }),
-      },
-    } as unknown) as React.ChangeEvent;
+    const event = synthesiseEvent(
+      selectedOptions.map((o) => {
+        return o.label;
+      }),
+    );
     change(event, name);
   };
 

@@ -10,15 +10,21 @@ export default interface Book {
 }
 
 export type NewBook = {
-  title: string
-  author: string
-  genres: string[]
-  rating: number
-  comments: string
-  dateFinished: string
-}
+  title: string;
+  author: string;
+  genres: string[];
+  rating: number;
+  comments: string;
+  dateFinished: string;
+};
 
-export const RequiredBookFields = ["title", "author", "genres", "rating", "dateFinished"]
+export const RequiredBookFields = [
+  'title',
+  'author',
+  'genres',
+  'rating',
+  'dateFinished',
+];
 
 export const blankBook: Book = {
   id: 0,
@@ -29,4 +35,4 @@ export const blankBook: Book = {
   comments: '',
   updatedAt: '',
   dateFinished: '',
-}
+};

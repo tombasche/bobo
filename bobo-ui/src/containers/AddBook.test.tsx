@@ -4,7 +4,6 @@ import {
   fireEvent,
   screen,
   getByLabelText,
-  getByRole,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
