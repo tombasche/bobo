@@ -4,12 +4,15 @@ import {
   fireEvent,
   screen,
   getByLabelText,
+  getByText,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
 
 import { server } from '../mocks/server';
 import AddBook from './AddBook';
+import { blankBook } from '../types/Book';
+import { toEmoji } from '../components/Rating';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -64,6 +67,16 @@ test('Creating a book without all fields, highlights those fields', () => {
 
   expectToHaveStyle('title');
   expectToHaveStyle('author');
+});
+
+test('Rating has a default value upon opening the form', () => {
+  render(node);
+  clickAdd();
+  submitForm();
+  const defaultEmoji = toEmoji(blankBook.rating);
+  expect(screen.getByText(defaultEmoji)).toHaveStyle(`
+    opacity: 1;
+  `);
 });
 
 test('Opening the modal doesnt cause fields to be highlighted', () => {

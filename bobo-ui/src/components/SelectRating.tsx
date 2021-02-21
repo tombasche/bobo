@@ -31,7 +31,11 @@ const EmojiContainer = styled.div`
 
 const SelectRating = ({ name, value, change }: SelectRatingProps) => {
   return (
-    <EmojiContainer>
+    <EmojiContainer
+      aria-label={name}
+      aria-labelledby={name}
+      aria-required="true"
+    >
       {Object.keys(emojiMap).map((e) => {
         return (
           <EmojiIcon
