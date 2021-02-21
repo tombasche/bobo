@@ -49,7 +49,7 @@ const AddBook = () => {
           book={book}
           submit={createBook}
           change={updateBook}
-          errors={validationErrors}
+          validFields={validationErrors}
         />
       </Modal>
     </>

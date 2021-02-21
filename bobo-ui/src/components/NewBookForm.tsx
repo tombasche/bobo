@@ -38,20 +38,20 @@ interface NewBookProps {
   book: Book;
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
   change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
-  errors: ValidFields;
+  validFields: ValidFields;
 }
 
-const NewBookForm = ({ book, submit, change, errors }: NewBookProps) => {
+const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
   return (
     <BookForm onSubmit={(e) => submit(e, book)}>
       <Fields>
         <Field>
-          <Label>Title</Label>
+          <Label htmlFor="title">Title</Label>
           <BookInputField
             name="title"
             value={book.title}
             change={change}
-            error={false}
+            error={!validFields.title}
           />
         </Field>
         <Field>
@@ -60,7 +60,7 @@ const NewBookForm = ({ book, submit, change, errors }: NewBookProps) => {
             name="author"
             value={book.author}
             change={change}
-            error={false}
+            error={!validFields.author}
           />
         </Field>
         <Field>
