@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ValidFields } from '../backend/book/validate';
+import GENRES from '../data/genres';
 import Book from '../types/Book';
 import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';
@@ -84,7 +85,7 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
           <BookMultiSelectField
             name="genres"
             values={book.genres}
-            options={['Fantasy', 'Action', 'Non-fiction']}
+            options={GENRES}
             change={change}
             error={hasError(validFields, 'genres')}
           />
