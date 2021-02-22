@@ -22,7 +22,7 @@ export default function BookDisplay({ book }: BookDisplayProps) {
       onClick={() => isShowingDetail(!showingDetail)}
       expanded={showingDetail}
     >
-      {showingDetail ? (
+      {showingDetail && (
         <div>
           <p> Rated: {Rating(book.rating)}</p>
           <BookComments comments={book.comments} />
@@ -32,7 +32,7 @@ export default function BookDisplay({ book }: BookDisplayProps) {
             <DateDeltaDisplay date={book.updatedAt} />
           </CardFooter>
         </div>
-      ) : null}
+      )}
     </ClickableCard>
   );
 }
