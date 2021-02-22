@@ -4,7 +4,7 @@ export const CREATE_BOOK_MUTATION = graphql.mutation(
   'createBook',
   (_, res, ctx) => {
     return res(
-      ctx.delay(),
+      ctx.delay(500),
       ctx.data({
         data: {
           id: 99,

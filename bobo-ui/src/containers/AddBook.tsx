@@ -13,7 +13,10 @@ const AddBook = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [validationErrors, setValidationErrors] = useValidationErrors();
   const [book, setBook] = React.useState<Book>(withTodaysDate(blankBook));
-  const [addBook] = useCreateBook();
+  const [
+    addBook,
+    { loading: isSaving, error: savingHasErrored },
+  ] = useCreateBook();
 
   const createBook = (e: React.SyntheticEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();
@@ -39,11 +42,10 @@ const AddBook = () => {
     setBook(withTodaysDate(blankBook));
     setValidationErrors({});
   };
-
   return (
     <>
       <Add open={() => setModalIsOpen(true)} />
-      <Modal title="Add Book" isOpen={modalIsOpen} close={reset}>
+      <Modal title="Add Book" isOpen={modalIsOpen || isSaving} close={reset}>
         {any(validationErrors) && <FormErrorMessage />}
         <NewBookForm
           book={book}
