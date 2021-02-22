@@ -60,3 +60,19 @@ const rounded = (n: number): number => {
 export const dateDiffTilNow = (then: Date): string => {
   return dateDiff(new Date(), then);
 };
+
+export const lowResDateDiff = (now: Date, then: Date): string => {
+  const diff: number = now.getTime() - then.getTime();
+  const days = toDays(toHours(toMinutes(toSeconds(diff))));
+  if (days <= 1) return 'today';
+  if (days > 1 && days <= 2) return 'yesterday';
+  if (days < 30) {
+    return `${rounded(days)} days ago`;
+  }
+  const months = rounded(toMonths(days));
+  if (months < 12) {
+    return `${months} month${months > 1 ? 's' : ''} ago`;
+  }
+  const years = rounded(toYears(months));
+  return `${years} year${years > 1 ? 's' : ''} ago`;
+};
