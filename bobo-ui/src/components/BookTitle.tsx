@@ -16,8 +16,7 @@ const TitleInfo = styled.span`
 `;
 
 const BookTitle = ({ book }: { book: Book }) => {
-  const now = new Date();
-  const then = parseSimpleDateToDate(book.dateFinished);
+  const [now, then] = [new Date(), parseSimpleDateToDate(book.dateFinished)];
   return (
     <TitleInfo>
       <Title>{`${book.title} - ${book.author}`}</Title>
