@@ -1,7 +1,7 @@
 import React from 'react';
 import Select, { ValueType } from 'react-select';
 import styled from 'styled-components';
-import { synthesiseEvent } from '../helpers/Event';
+import { synthesiseEvent } from '../../helpers/Event';
 
 interface BookMultiSelectFieldProps {
   name: string;
