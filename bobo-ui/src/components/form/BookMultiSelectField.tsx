@@ -15,8 +15,6 @@ type OptionType = {
   label: string;
 };
 
-type IsMulti = true;
-
 const valueToOptionsObject = (v: string) => {
   return { value: v.toLowerCase(), label: v };
 };
@@ -24,6 +22,8 @@ const valueToOptionsObject = (v: string) => {
 const Container = styled.span`
   min-width: 12em;
 `;
+
+type IsMulti = true;
 
 const BookMultiSelectField = ({
   name,
