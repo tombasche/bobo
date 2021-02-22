@@ -7,47 +7,30 @@ import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';
 import SelectRating from './SelectRating';
 import SubmitButton from './SubmitButton';
-
-const BookForm = styled.form`
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  height: 100%;
-`;
-
-const Field = styled.div`
-  display: flex;
-  flex-flow: column;
-  margin: 0 0 5px 5px;
-  width: 100%;
-`;
-
-const Fields = styled.div`
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-`;
-
-const Label = styled.label`
-  margin-bottom: 0.4em;
-  font-weight: 500;
-  color: #001e32;
-`;
+import BookForm from './BookForm';
+import Field from './Field';
+import Fields from './Fields';
+import Label from './Label';
 
 const BottomLeft = styled.div`
   position: absolute;
   top: 85%;
 `;
 
+type FieldChangeEvent = (
+  e: React.SyntheticEvent<HTMLElement>,
+  field: string,
+) => void;
+
 interface NewBookProps {
   book: Book;
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
-  change: (e: React.SyntheticEvent<HTMLElement>, field: string) => void;
+  change: FieldChangeEvent;
   validFields: ValidFields;
 }
 
 const hasError = (validFields: ValidFields, field: string): boolean => {
-  return validFields.title !== undefined && !validFields[field];
+  return validFields[field] !== undefined && !validFields[field];
 };
 
 const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
