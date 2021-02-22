@@ -3,11 +3,11 @@ import { clean, validate } from '../backend/book/validate';
 import { useCreateBook } from '../backend/book/queries';
 import Add from '../components/Add';
 import Modal from '../components/Modal';
-import NewBookForm from '../components/NewBookForm';
+import NewBookForm from '../form/NewBookForm';
 import Book, { blankBook, withTodaysDate } from '../types/Book';
 import any from '../helpers/Any';
 import { useValidationErrors } from '../backend/book/formValidation';
-import { FormErrorMessage } from '../components/FormErrorMessage';
+import { FormErrorMessage } from '../form/FormErrorMessage';
 
 const AddBook = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);

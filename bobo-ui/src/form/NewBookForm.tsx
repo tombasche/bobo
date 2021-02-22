@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { ValidFields } from '../backend/book/validate';
 import GENRES from '../data/genres';
-import { serialiseJSDate } from '../dateUtils/parse';
 import Book from '../types/Book';
 import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';

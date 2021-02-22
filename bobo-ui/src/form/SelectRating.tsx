@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { synthesiseEvent } from '../helpers/Event';
-import { emojiMap, toEmoji } from './Rating';
+import { emojiMap, toEmoji } from '../components/Rating';
 
 interface SelectRatingProps {
   name: string;
