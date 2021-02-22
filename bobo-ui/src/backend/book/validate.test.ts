@@ -7,7 +7,7 @@ test('Remove unwanted fields from the book object', () => {
     id: 0,
     updatedAt: '',
     genres: ['young adult', 'fiction', 'fantasy'],
-    rating: 1,
+    rating: '1',
     comments: '',
     dateFinished: '2020-01-01',
   };

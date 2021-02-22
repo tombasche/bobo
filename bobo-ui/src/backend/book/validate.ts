@@ -3,8 +3,11 @@ import Book, { NewBook, RequiredBookFields } from '../../types/Book';
 import all from '../../helpers/All';
 
 export const clean = (b: Book) => {
-  const { id, updatedAt, ...rest } = b;
-  return rest;
+  const { id, updatedAt, rating, ...rest } = b;
+  return {
+    ...rest,
+    rating: parseInt(`${rating}`),
+  };
 };
 
 export interface ValidFields {
