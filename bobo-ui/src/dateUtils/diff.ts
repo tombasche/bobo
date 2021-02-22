@@ -17,16 +17,7 @@ export const dateDiff = (now: Date, then: Date): string => {
   }
 
   const days = toDays(hours);
-  if (days < 30) {
-    return `${rounded(days)} days ago`;
-  }
-
-  const months = rounded(toMonths(days));
-  if (months < 12) {
-    return `${months} month${months > 1 ? 's' : ''} ago`;
-  }
-  const years = rounded(toYears(months));
-  return `${years} year${years > 1 ? 's' : ''} ago`;
+  return daysMonthsYearsDisplay(days);
 };
 
 const toSeconds = (ms: number): number => {
@@ -66,6 +57,13 @@ export const lowResDateDiff = (now: Date, then: Date): string => {
   const days = toDays(toHours(toMinutes(toSeconds(diff))));
   if (days <= 1) return 'today';
   if (days > 1 && days <= 2) return 'yesterday';
+  if (days < 30) {
+    return `${rounded(days)} days ago`;
+  }
+  return daysMonthsYearsDisplay(days);
+};
+
+const daysMonthsYearsDisplay = (days: number): string => {
   if (days < 30) {
     return `${rounded(days)} days ago`;
   }
