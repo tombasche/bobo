@@ -12,3 +12,7 @@ export const parseSimpleDate = (d: string): string => {
 export const parseSimpleDateToDate = (d: string): Date => {
   return DateTime.fromISO(d).toJSDate();
 };
+
+export const serialiseJSDate = (d: Date): string => {
+  return DateTime.fromJSDate(d).toFormat('dd-LL-yyyy');
+};

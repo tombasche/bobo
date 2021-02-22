@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ValidFields } from '../backend/book/validate';
 import GENRES from '../data/genres';
+import { serialiseJSDate } from '../dateUtils/parse';
 import Book from '../types/Book';
 import BookInputField from './BookInputField';
 import BookMultiSelectField from './BookMultiSelectField';
@@ -47,7 +48,7 @@ interface NewBookProps {
 }
 
 const hasError = (validFields: ValidFields, field: string): boolean => {
-  return validFields.title !== undefined && !validFields.title;
+  return validFields.title !== undefined && !validFields[field];
 };
 
 const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
@@ -88,6 +89,15 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
             options={GENRES}
             change={change}
             error={hasError(validFields, 'genres')}
+          />
+        </Field>
+        <Field>
+          <Label htmlFor="dateFinished">Date Finished</Label>
+          <BookInputField
+            name="dateFinished"
+            value={book.dateFinished}
+            change={change}
+            error={hasError(validFields, 'dateFinished')}
           />
         </Field>
       </Fields>

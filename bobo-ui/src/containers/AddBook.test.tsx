@@ -69,13 +69,34 @@ test('Creating a book without all fields, highlights those fields', () => {
   expectToHaveStyle('author');
 });
 
-test('Rating has a default value upon opening the form', () => {
+test('Rating has a default value', () => {
   render(node);
   clickAdd();
   submitForm();
   const defaultEmoji = toEmoji(blankBook.rating);
   expect(screen.getByText(defaultEmoji)).toHaveStyle(`
     opacity: 1;
+  `);
+});
+
+test('Date finished has a default value', () => {
+  render(node);
+  clickAdd();
+  submitForm();
+  const container = screen.getByText(/Add Book/).closest('div');
+  const dateFinished = getByLabelText(container!, 'dateFinished');
+  expect(dateFinished.nodeValue).not.toBe('');
+});
+
+test('Date finished is set correctly by default', () => {
+  render(node);
+  clickAdd();
+  submitForm();
+  const container = screen.getByText(/Add Book/).closest('div');
+  const dateFinished = getByLabelText(container!, 'dateFinished');
+  expect(dateFinished).not.toHaveStyle(`
+    border: 1px solid red;
+    box-shadow: 0 0 5px red;
   `);
 });
 

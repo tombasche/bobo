@@ -4,7 +4,7 @@ import { useCreateBook } from '../backend/book/queries';
 import Add from '../components/Add';
 import Modal from '../components/Modal';
 import NewBookForm from '../components/NewBookForm';
-import Book, { blankBook } from '../types/Book';
+import Book, { blankBook, withTodaysDate } from '../types/Book';
 import any from '../helpers/Any';
 import { useValidationErrors } from '../backend/book/formValidation';
 import { FormErrorMessage } from '../components/FormErrorMessage';
@@ -12,7 +12,7 @@ import { FormErrorMessage } from '../components/FormErrorMessage';
 const AddBook = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [validationErrors, setValidationErrors] = useValidationErrors();
-  const [book, setBook] = React.useState<Book>(blankBook);
+  const [book, setBook] = React.useState<Book>(withTodaysDate(blankBook));
   const [addBook] = useCreateBook();
 
   const createBook = (e: React.SyntheticEvent<HTMLFormElement>, b: Book) => {
@@ -36,7 +36,7 @@ const AddBook = () => {
 
   const reset = () => {
     setModalIsOpen(false);
-    setBook(blankBook);
+    setBook(withTodaysDate(blankBook));
     setValidationErrors({});
   };
 

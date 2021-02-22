@@ -1,3 +1,5 @@
+import { serialiseJSDate } from '../dateUtils/parse';
+
 export default interface Book {
   id: number;
   title: string;
@@ -35,4 +37,11 @@ export const blankBook: Book = {
   comments: '',
   updatedAt: '',
   dateFinished: '',
+};
+
+export const withTodaysDate = (b: Book) => {
+  return {
+    ...b,
+    dateFinished: serialiseJSDate(new Date()),
+  };
 };
