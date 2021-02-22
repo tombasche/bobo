@@ -4,10 +4,6 @@ import Book from '../types/Book';
 import { lowResDateDiff } from '../dateUtils/diff';
 import { parseSimpleDateToDate } from '../dateUtils/parse';
 
-interface BookTitleProps {
-  book: Book;
-}
-
 const Title = styled.h3`
   display: inline;
 `;
@@ -19,7 +15,7 @@ const TitleInfo = styled.span`
   justify-content: space-between;
 `;
 
-const BookTitle = ({ book }: BookTitleProps) => {
+const BookTitle = ({ book }: { book: Book }) => {
   const now = new Date();
   const then = parseSimpleDateToDate(book.dateFinished);
   return (
