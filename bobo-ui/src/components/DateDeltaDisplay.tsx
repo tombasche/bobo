@@ -3,11 +3,7 @@ import { dateDiffTilNow } from '../dateUtils/diff';
 import { parseServerDate } from '../dateUtils/parse';
 import SmallFont from './SmallFont';
 
-interface DateDeltaDisplayProps {
-  date: string;
-}
-
-export default function DateDeltaDisplay({ date }: DateDeltaDisplayProps) {
+export default function DateDeltaDisplay({ date }: { date: string }) {
   return (
     <SmallFont>
       <p>Updated {dateDiffTilNow(parseServerDate(date))}</p>
