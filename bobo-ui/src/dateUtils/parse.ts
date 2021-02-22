@@ -14,5 +14,5 @@ export const parseSimpleDateToDate = (d: string): Date => {
 };
 
 export const serialiseJSDate = (d: Date): string => {
-  return DateTime.fromJSDate(d).toFormat('dd-LL-yyyy');
+  return DateTime.fromJSDate(d).toFormat('yyyy-LL-dd');
 };

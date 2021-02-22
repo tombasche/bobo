@@ -14,6 +14,6 @@ test('Parse a more ambiguous looking date', () => {
 
 test('Serialise a JS date to send to the server', () => {
   const d = new Date(2021, 1, 1, 0, 0, 0);
-  const expected = '01-02-2021';
+  const expected = '2021-02-01';
   expect(serialiseJSDate(d)).toEqual(expected);
 });
