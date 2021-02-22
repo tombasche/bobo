@@ -8,10 +8,12 @@ export const dateDiff = (now: Date, then: Date): string => {
     return `${rounded(seconds)} seconds ago`;
   }
   const minutes = toMinutes(seconds);
+  if (minutes <= 1) return 'a minute ago';
   if (minutes < 60) {
     return `${rounded(minutes)} minutes ago`;
   }
   const hours = toHours(minutes);
+  if (hours <= 1) return 'an hour ago';
   if (hours < 24) {
     return `${rounded(hours)} hours ago`;
   }

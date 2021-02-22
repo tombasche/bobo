@@ -21,11 +21,25 @@ test('Display a difference of two dates minutes apart', () => {
   expect(result).toEqual('30 minutes ago');
 });
 
+test('Display a difference of two dates a minute apart', () => {
+  const now = new Date(2020, 1, 1, 14, 30, 0);
+  const then = new Date(2020, 1, 1, 14, 29, 0);
+  const result = dateDiff(now, then);
+  expect(result).toEqual('a minute ago');
+});
+
 test('Display a difference of two dates hours apart', () => {
   const now = new Date(2020, 1, 1, 14, 30, 0);
   const then = new Date(2020, 1, 1, 12, 30, 0);
   const result = dateDiff(now, then);
   expect(result).toEqual('2 hours ago');
+});
+
+test('Display a difference of two dates an hour apart', () => {
+  const now = new Date(2020, 1, 1, 14, 30, 0);
+  const then = new Date(2020, 1, 1, 13, 30, 0);
+  const result = dateDiff(now, then);
+  expect(result).toEqual('an hour ago');
 });
 
 test('Display a difference of two dates days apart', () => {
