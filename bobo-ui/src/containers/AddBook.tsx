@@ -52,6 +52,7 @@ const AddBook = () => {
           submit={createBook}
           change={updateBook}
           validFields={validationErrors}
+          isSaving={isSaving}
         />
       </Modal>
     </>

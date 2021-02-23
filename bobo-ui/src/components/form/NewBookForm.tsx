@@ -27,13 +27,20 @@ interface NewBookProps {
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
   change: FieldChangeEvent;
   validFields: ValidFields;
+  isSaving: boolean;
 }
 
 const hasError = (validFields: ValidFields, field: string): boolean => {
   return validFields[field] !== undefined && !validFields[field];
 };
 
-const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
+const NewBookForm = ({
+  book,
+  submit,
+  change,
+  validFields,
+  isSaving,
+}: NewBookProps) => {
   return (
     <BookForm onSubmit={(e) => submit(e, book)}>
       <Fields>
@@ -84,7 +91,7 @@ const NewBookForm = ({ book, submit, change, validFields }: NewBookProps) => {
         </Field>
       </Fields>
       <BottomLeft>
-        <SubmitButton />
+        <SubmitButton isSaving={isSaving} />
       </BottomLeft>
     </BookForm>
   );

@@ -1,12 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
+import ButtonLoading from '../ButtonLoading';
 
 const SubmitInput = styled.input`
   background-color: #003c64;
   border: none;
-
   cursor: pointer;
   color: white;
-  padding: 0.7em 1.2em 0.7em 1.2em;
+  padding: ${(props: { isSaving: boolean }) =>
+    props.isSaving ? '0.7em 1.2em 0.7em 1.8em;' : '0.7em 1.2em 0.7em 1.2em'};
   border-radius: 4px;
   font-size: 0.9em;
 
@@ -14,10 +16,24 @@ const SubmitInput = styled.input`
   &:hover {
     transform: scale(1.04);
   }
+
+  position: absolute;
+  top: 0px;
 `;
 
-const SubmitButton = () => {
-  return <SubmitInput type="submit" value="Submit" />;
+const SubmitButtonContainer = styled.div`
+  display: block;
+  width: 100%;
+  position: relative;
+`;
+
+const SubmitButton = ({ isSaving }: { isSaving: boolean }) => {
+  return (
+    <SubmitButtonContainer>
+      {isSaving && <ButtonLoading />}
+      <SubmitInput type="submit" value="Submit" isSaving={isSaving} />
+    </SubmitButtonContainer>
+  );
 };
 
 export default SubmitButton;

@@ -10,7 +10,7 @@ import Error from '../components/Error';
 export function Books() {
   const { loading, error, data } = useAllBooks();
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading size="2x" />;
   if (error) return <Error />;
 
   return (

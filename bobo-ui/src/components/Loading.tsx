@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFan } from '@fortawesome/free-solid-svg-icons';
 import styled, { keyframes } from 'styled-components';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 const animation = keyframes`
   from {
@@ -16,10 +17,10 @@ const LoadingContainer = styled.div`
   animation: ${animation} 1s linear infinite;
 `;
 
-const Loading = () => {
+const Loading = ({ size }: { size: SizeProp }) => {
   return (
     <LoadingContainer>
-      <FontAwesomeIcon icon={faFan} size="2x" />
+      <FontAwesomeIcon icon={faFan} size={size} />
     </LoadingContainer>
   );
 };
