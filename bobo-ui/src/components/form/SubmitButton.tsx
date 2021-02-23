@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonLoading from '../ButtonLoading';
+import ButtonLoading from '../loading/ButtonLoading';
 
 const SubmitInput = styled.input`
   background-color: #003c64;

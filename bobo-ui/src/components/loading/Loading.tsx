@@ -1,16 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFan } from '@fortawesome/free-solid-svg-icons';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
-
-const animation = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
+import { animation } from './animation';
 
 const LoadingContainer = styled.div`
   padding: 3em;
