@@ -8,12 +8,24 @@ import CardFooter from './card/CardFooter';
 import DateDeltaDisplay from './DateDeltaDisplay';
 import GenreDisplay from './GenreDisplay';
 import Rating from './Rating';
+import Delete from './Delete';
+import styled from 'styled-components';
 
 interface BookDisplayProps {
   book: Book;
+  deleteBook: () => void;
 }
 
-export default function BookDisplay({ book }: BookDisplayProps) {
+const CornerFooter = styled.div`
+  display: flex;
+  flex-flow: column;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+`;
+
+export default function BookDisplay({ book, deleteBook }: BookDisplayProps) {
   const [showingDetail, isShowingDetail] = useState<boolean>(false);
 
   return (
@@ -29,7 +41,18 @@ export default function BookDisplay({ book }: BookDisplayProps) {
           <p> Read: {parseSimpleDate(book.dateFinished)}</p>
           <CardFooter>
             <GenreDisplay genres={book.genres} />
-            <DateDeltaDisplay date={book.updatedAt} />
+            <CornerFooter>
+              <DateDeltaDisplay date={book.updatedAt} />
+              <ButtonContainer>
+                <Delete
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    deleteBook();
+                  }}
+                />
+              </ButtonContainer>
+            </CornerFooter>
           </CardFooter>
         </div>
       )}

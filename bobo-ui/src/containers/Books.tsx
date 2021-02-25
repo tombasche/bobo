@@ -16,7 +16,11 @@ export function Books() {
   return (
     <BookList>
       {data.allBooks.map((book: Book) => (
-        <BookDisplay book={book} key={book.id} />
+        <BookDisplay
+          book={book}
+          key={book.id}
+          deleteBook={() => console.log('Deleting')}
+        />
       ))}
     </BookList>
   );
