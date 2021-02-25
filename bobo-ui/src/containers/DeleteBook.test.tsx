@@ -32,4 +32,5 @@ test('Able to delete a book', async () => {
   fireEvent.click(bookContainer!);
   const deleteButton = getByLabelText(bookContainer!, 'delete');
   fireEvent.click(deleteButton);
+  await waitFor(() => screen.getByText(/Deleted/));
 });
