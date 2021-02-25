@@ -19,5 +19,5 @@ const node = (
 
 test('Render a list of books', async () => {
   render(node);
-  await waitFor(() => screen.getAllByText(/The Return of the King/));
+  await waitFor(() => screen.getByText(/The Return of the King/));
 });
