@@ -52,13 +52,16 @@ export const useCreateBook = () =>
 const deleteBookMutation = gql`
   mutation deleteBook($id: ID!) {
     deleteBook(id: $id) {
+      id
       title
     }
   }
 `;
 
 interface DeletedBook {
-  title: string;
+  deleteBook: {
+    title: string;
+  };
 }
 
 type onCompletedDelete = (d: DeletedBook) => void;

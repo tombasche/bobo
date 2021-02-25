@@ -19,7 +19,9 @@ export const DELETE_BOOK_MUTATION = graphql.mutation(
     return res(
       ctx.delay(500),
       ctx.data({
-        title: "The Return of the King"
+        deleteBook: {
+          title: "The Return of the King"
+        }
       }),
     );
   },

@@ -14,14 +14,14 @@ export function Books() {
   const [deletedBookTitle, setDeletedBookTitle] = React.useState<string>('');
 
   const [deleteBook, { loading: isDeleting }] = useDeleteBook((data) => {
-    setDeletedBookTitle(data.title);
+    setDeletedBookTitle(data.deleteBook.title);
   });
 
   React.useEffect(() => {
     if (deletedBookTitle) {
       const timeout = setTimeout(() => {
         setDeletedBookTitle('');
-      }, 5000);
+      }, 2000);
       return () => clearTimeout(timeout);
     }
   }, [deletedBookTitle]);
