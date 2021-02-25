@@ -8,6 +8,7 @@ const GENRES = [
   'fairy tale',
   'fantasy',
   'folktale',
+  'food',
   'gothic',
   'historical',
   'horror',
