@@ -19,14 +19,14 @@ const SubmitInput = styled.input`
   &:hover {
     transform: scale(1.04);
   }
-
-  position: absolute;
-  top: 0px;
 `;
 
 const SubmitButtonContainer = styled.div`
   display: block;
   width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.2em;
   position: relative;
 `;
 

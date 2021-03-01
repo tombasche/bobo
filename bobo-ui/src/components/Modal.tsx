@@ -15,8 +15,8 @@ const ModalDiv = styled.div`
 const Container = styled.div`
   position: fixed;
   width: 20%;
-  height: ${(props: { height: number }) => props.height}%;
-  padding: 2em;
+  height: fit-content;
+  padding: 2em 2em 0 2em;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -34,18 +34,11 @@ const ModalTitle = styled.h2`
 
 interface ModalProps {
   title: string;
-  modalHeightPercent?: number;
   isOpen: boolean;
   close: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  title,
-  modalHeightPercent = 70,
-  isOpen,
-  close,
-  children,
-}) => {
+const Modal: React.FC<ModalProps> = ({ title, isOpen, close, children }) => {
   const useCloseOnOutsideClick = (ref: RefObject<HTMLDivElement>) => {
     useEffect(() => {
       function handleClickOutside(event: { target: any }) {
@@ -65,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
 
   return isOpen ? (
     <ModalDiv>
-      <Container ref={wrapperRef} height={modalHeightPercent}>
+      <Container ref={wrapperRef}>
         <ModalTitle>{title}</ModalTitle>
         {children}
       </Container>

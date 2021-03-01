@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { ValidFields } from '../../backend/book/validate';
 import GENRES from '../../data/genres';
 import Book from '../../types/Book';
@@ -11,11 +10,6 @@ import BookForm from './BookForm';
 import Field from './Field';
 import Fields from './Fields';
 import Label from './Label';
-
-const BottomLeft = styled.div`
-  position: absolute;
-  top: 85%;
-`;
 
 type FieldChangeEvent = (
   e: React.SyntheticEvent<HTMLElement>,
@@ -90,9 +84,7 @@ const NewBookForm = ({
           />
         </Field>
       </Fields>
-      <BottomLeft>
-        <SubmitButton isSaving={isSaving} />
-      </BottomLeft>
+      <SubmitButton isSaving={isSaving} />
     </BookForm>
   );
 };
