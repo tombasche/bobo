@@ -6,6 +6,7 @@ import {
   fireEvent,
   getByRole,
   getByLabelText,
+  getByText,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -32,5 +33,8 @@ test('Able to delete a book', async () => {
   fireEvent.click(bookContainer!);
   const deleteButton = getByLabelText(bookContainer!, 'delete');
   fireEvent.click(deleteButton);
+  const confirmDialog = screen.getByText(/are you sure/i).closest('div');
+  const confirmButton = getByLabelText(confirmDialog!, 'yes');
+  fireEvent.click(confirmButton);
   await waitFor(() => screen.getByText(/Deleted/));
 });
