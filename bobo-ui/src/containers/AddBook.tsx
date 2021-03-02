@@ -1,9 +1,8 @@
 import React, { SyntheticEvent } from 'react';
 import { clean, validate } from '../backend/book/validate';
-import { useCreateBook } from '../backend/book/queries';
 import Add from '../components/Add';
 import Modal from '../components/Modal';
-import NewBookForm from '../components/form/NewBookForm';
+import BookForm from '../components/form/BookForm';
 import Book, { blankBook, withTodaysDate } from '../types/Book';
 import any from '../helpers/Any';
 import { useValidationErrors } from '../backend/book/formValidation';
@@ -49,7 +48,7 @@ const AddBook = ({
       <Add open={() => setModalIsOpen(true)} />
       <Modal title="Add Book" isOpen={modalIsOpen || isSaving} close={reset}>
         {any(validationErrors) && <FormErrorMessage />}
-        <NewBookForm
+        <BookForm
           book={book}
           submit={createBook}
           change={updateBook}
