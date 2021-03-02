@@ -16,7 +16,7 @@ type FieldChangeEvent = (
   field: string,
 ) => void;
 
-interface NewBookProps {
+interface BookFormProps {
   book: Book;
   submit: (e: React.FormEvent<HTMLFormElement>, b: Book) => void;
   change: FieldChangeEvent;
@@ -34,7 +34,7 @@ const BookForm = ({
   change,
   validFields,
   isSaving,
-}: NewBookProps) => {
+}: BookFormProps) => {
   return (
     <Form onSubmit={(e) => submit(e, book)}>
       <Fields>

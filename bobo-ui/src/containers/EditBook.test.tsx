@@ -31,4 +31,5 @@ test('Able to open the edit modal with pre-filled fields', async () => {
   fireEvent.click(bookContainer!);
   const editButton = getByLabelText(bookContainer!, 'edit');
   fireEvent.click(editButton);
+  screen.getByText(/Edit Book/).closest('div');
 });

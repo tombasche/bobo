@@ -14,6 +14,7 @@ import Edit from './Edit';
 
 interface BookDisplayProps {
   book: Book;
+  editBook: () => void;
   deleteBook: () => void;
 }
 
@@ -26,7 +27,11 @@ const ButtonContainer = styled.div`
   display: flex;
 `;
 
-export default function BookDisplay({ book, deleteBook }: BookDisplayProps) {
+export default function BookDisplay({
+  book,
+  editBook,
+  deleteBook,
+}: BookDisplayProps) {
   const [showingDetail, isShowingDetail] = useState<boolean>(false);
 
   return (
@@ -49,6 +54,7 @@ export default function BookDisplay({ book, deleteBook }: BookDisplayProps) {
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
+                    editBook();
                   }}
                 />
                 <Delete

@@ -8,13 +8,11 @@ import Loading from '../components/loading/Loading';
 import Error from '../components/Error';
 import Message from '../components/Message';
 import ConfirmDelete from '../components/ConfirmDelete';
-import Modal from '../components/Modal';
-import FormErrorMessage from '../components/form/FormErrorMessage';
-import BookForm from '../components/form/BookForm';
 
 export function Books() {
   const { loading, error, data } = useAllBooks();
   const [deletedBook, confirmDeleteBook] = React.useState<number | null>(null);
+  const [editingBook, setEditingBook] = React.useState<Book | null>(null);
   const [deletedBookTitle, setDeletedBookTitle] = React.useState<string>('');
 
   const [deleteBook, { loading: isDeleting }] = useDeleteBook((data) => {
@@ -43,13 +41,16 @@ export function Books() {
           <BookDisplay
             book={book}
             key={book.id}
+            editBook={() => {
+              setEditingBook(book);
+            }}
             deleteBook={() => {
               confirmDeleteBook(book.id);
             }}
           />
         ))}
       </BookList>
-      {deletedBook ? (
+      {deletedBook && (
         <ConfirmDelete
           open={!!deletedBook}
           onConfirm={() => {
@@ -58,7 +59,8 @@ export function Books() {
           }}
           onClose={() => confirmDeleteBook(null)}
         />
-      ) : null}
+      )}
+      {editingBook && <p>Edit Book</p>}
     </>
   );
 }
