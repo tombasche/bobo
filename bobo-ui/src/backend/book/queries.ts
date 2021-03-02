@@ -49,6 +49,38 @@ const createBookMutation = gql`
 export const useCreateBook = () =>
   useMutation(createBookMutation, { refetchQueries: ['allBooks'] });
 
+const editBookMutation = gql`
+  mutation editBook(
+    $title: String!
+    $author: String!
+    $genres: [String]!
+    $rating: Float!
+    $comments: String
+    $dateFinished: String!
+  ) {
+    editBook(
+      title: $title
+      author: $author
+      genres: $genres
+      rating: $rating
+      comments: $comments
+      dateFinished: $dateFinished
+    ) {
+      id
+      title
+      author
+      rating
+      genres
+      comments
+      dateFinished
+      updatedAt
+    }
+  }
+`;
+
+export const useEditBook = () =>
+  useMutation(editBookMutation, { refetchQueries: ['allBooks'] });
+
 const deleteBookMutation = gql`
   mutation deleteBook($id: ID!) {
     deleteBook(id: $id) {
