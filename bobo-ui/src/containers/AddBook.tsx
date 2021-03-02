@@ -18,7 +18,7 @@ const AddBook = ({
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [validationErrors, setValidationErrors] = useValidationErrors();
   const [book, setBook] = React.useState<Book>(withTodaysDate(blankBook));
-  const [addBook, { loading: isSaving }] = useSubmit();
+  const [submitBook, { loading: isSaving }] = useSubmit();
 
   const createBook = (e: React.SyntheticEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const AddBook = ({
       setValidationErrors(result.message);
       return;
     }
-    addBook({ variables: result.value });
+    submitBook({ variables: result.value });
     reset();
   };
 
