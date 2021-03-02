@@ -10,6 +10,7 @@ import GenreDisplay from './GenreDisplay';
 import Rating from './Rating';
 import Delete from './Delete';
 import styled from 'styled-components';
+import Edit from './Edit';
 
 interface BookDisplayProps {
   book: Book;
@@ -44,6 +45,12 @@ export default function BookDisplay({ book, deleteBook }: BookDisplayProps) {
             <CornerFooter>
               <DateDeltaDisplay date={book.updatedAt} />
               <ButtonContainer>
+                <Edit
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                  }}
+                />
                 <Delete
                   onClick={(e) => {
                     e.stopPropagation();
