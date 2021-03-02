@@ -6,6 +6,7 @@ import { client } from './query/ApolloClient';
 import { Sidebar } from './components/Sidebar';
 import Page from './components/Page';
 import AddBook from './containers/AddBook';
+import { useCreateBook } from './backend/book/queries';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <GlobalStyles />
       <Sidebar />
       <Page>
-        <AddBook />
+        <AddBook useSubmit={useCreateBook} />
         <Books />
       </Page>
     </ApolloProvider>

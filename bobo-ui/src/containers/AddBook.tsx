@@ -8,12 +8,17 @@ import Book, { blankBook, withTodaysDate } from '../types/Book';
 import any from '../helpers/Any';
 import { useValidationErrors } from '../backend/book/formValidation';
 import FormErrorMessage from '../components/form/FormErrorMessage';
+import { MutationTuple } from '@apollo/client';
 
-const AddBook = () => {
+const AddBook = ({
+  useSubmit,
+}: {
+  useSubmit: () => MutationTuple<any, Record<string, any>>;
+}) => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [validationErrors, setValidationErrors] = useValidationErrors();
   const [book, setBook] = React.useState<Book>(withTodaysDate(blankBook));
-  const [addBook, { loading: isSaving }] = useCreateBook();
+  const [addBook, { loading: isSaving }] = useSubmit();
 
   const createBook = (e: React.SyntheticEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();

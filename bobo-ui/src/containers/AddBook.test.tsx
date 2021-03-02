@@ -12,6 +12,7 @@ import { server } from '../mocks/server';
 import AddBook from './AddBook';
 import { blankBook } from '../types/Book';
 import { toEmoji } from '../components/Rating';
+import { useCreateBook } from '../backend/book/queries';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -19,7 +20,7 @@ afterAll(() => server.close());
 
 const node = (
   <MockedProvider>
-    <AddBook />
+    <AddBook useSubmit={useCreateBook} />
   </MockedProvider>
 );
 
