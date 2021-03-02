@@ -9,7 +9,7 @@ import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
 
 import { server } from '../mocks/server';
-import AddBook from './AddBook';
+import AddBook from '../components/AddBook';
 import { blankBook } from '../types/Book';
 import { toEmoji } from '../components/Rating';
 import { useCreateBook } from '../backend/book/queries';

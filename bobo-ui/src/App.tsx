@@ -5,7 +5,7 @@ import { Books } from './containers/Books';
 import { client } from './query/ApolloClient';
 import { Sidebar } from './components/Sidebar';
 import Page from './components/Page';
-import AddBook from './containers/AddBook';
+import AddBook from './components/AddBook';
 import { useCreateBook } from './backend/book/queries';
 
 function App() {
