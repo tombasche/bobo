@@ -26,3 +26,17 @@ export const DELETE_BOOK_MUTATION = graphql.mutation(
     );
   },
 );
+
+export const EDIT_BOOK_MUTATION = graphql.mutation(
+  'editBook',
+  (_, res, ctx) => {
+    return res(
+      ctx.delay(500),
+      ctx.data({
+        editBook: {
+          title: "The Return of the King"
+        }
+      })
+    )
+  }
+)

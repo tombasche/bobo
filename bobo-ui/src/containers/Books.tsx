@@ -1,13 +1,18 @@
 import React from 'react';
 
 import Book from '../types/Book';
-import { useAllBooks, useDeleteBook } from '../backend/book/queries';
+import {
+  useAllBooks,
+  useDeleteBook,
+  useEditBook,
+} from '../backend/book/queries';
 import BookDisplay from '../components/BookDisplay';
 import BookList from '../components/BookList';
 import Loading from '../components/loading/Loading';
 import Error from '../components/Error';
 import Message from '../components/Message';
 import ConfirmDelete from '../components/ConfirmDelete';
+import EditBook from '../components/EditBook';
 
 export function Books() {
   const { loading, error, data } = useAllBooks();
@@ -18,6 +23,8 @@ export function Books() {
   const [deleteBook, { loading: isDeleting }] = useDeleteBook((data) => {
     setDeletedBookTitle(data.deleteBook.title);
   });
+
+  const [editBook, { loading: isSaving }] = useEditBook();
 
   React.useEffect(() => {
     if (deletedBookTitle) {
@@ -60,7 +67,14 @@ export function Books() {
           onClose={() => confirmDeleteBook(null)}
         />
       )}
-      {editingBook && <p>Edit Book</p>}
+      {editingBook && (
+        <EditBook
+          bookToEdit={editingBook}
+          isOpen={!!editingBook}
+          useSubmit={useEditBook}
+          closeModal={() => setEditingBook(null)}
+        />
+      )}
     </>
   );
 }
