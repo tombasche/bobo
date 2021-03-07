@@ -27,8 +27,8 @@ export const DELETE_BOOK_MUTATION = graphql.mutation(
   },
 );
 
-export const EDIT_BOOK_MUTATION = graphql.mutation(
-  'editBook',
+export const UPDATE_BOOK_MUTATION = graphql.mutation(
+  'updateBook',
   (_, res, ctx) => {
     return res(
       ctx.delay(500),
