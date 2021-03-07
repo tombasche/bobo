@@ -20,7 +20,7 @@ export function Books() {
   const [editingBook, setEditingBook] = React.useState<Book | null>(null);
   const [deletedBookTitle, setDeletedBookTitle] = React.useState<string>('');
 
-  const [deleteBook, { loading: isDeleting }] = useDeleteBook((data) => {
+  const [deleteBook] = useDeleteBook((data) => {
     setDeletedBookTitle(data.deleteBook.title);
   });
 
