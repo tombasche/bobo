@@ -10,20 +10,13 @@ import { MutationTuple } from '@apollo/client';
 
 interface EditBookProps {
   bookToEdit: Book;
-  isOpen: boolean;
-  closeModal: () => void;
-  useSubmit: () => MutationTuple<any, Record<string, any>>;
+  submitBook: ({}) => void;
+  isSaving: boolean;
 }
 
-const EditBook = ({
-  bookToEdit,
-  isOpen,
-  closeModal,
-  useSubmit,
-}: EditBookProps) => {
+const EditBook = ({ bookToEdit, submitBook, isSaving }: EditBookProps) => {
   const [validationErrors, setValidationErrors] = useValidationErrors();
   const [book, setBook] = React.useState<Book>(bookToEdit);
-  const [submitBook, { loading: isSaving }] = useSubmit();
 
   const createBook = (e: React.SyntheticEvent<HTMLFormElement>, b: Book) => {
     e.preventDefault();
@@ -47,11 +40,10 @@ const EditBook = ({
 
   const reset = () => {
     setValidationErrors({});
-    closeModal();
   };
   return (
     <>
-      <Modal title="Edit Book" isOpen={isOpen || isSaving} close={reset}>
+      <Modal title="Edit Book" isOpen={isSaving || !!book} close={reset}>
         {any(validationErrors) && <FormErrorMessage />}
         <BookForm
           book={book}

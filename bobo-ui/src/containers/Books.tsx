@@ -24,6 +24,10 @@ export function Books() {
     setDeletedBookTitle(data.deleteBook.title);
   });
 
+  const [submitBook, { loading: isSaving }] = useEditBook(() => {
+    setEditingBook(null);
+  });
+
   React.useEffect(() => {
     if (deletedBookTitle) {
       const timeout = setTimeout(() => {
@@ -68,9 +72,8 @@ export function Books() {
       {editingBook && (
         <EditBook
           bookToEdit={editingBook}
-          isOpen={!!editingBook}
-          useSubmit={useEditBook}
-          closeModal={() => setEditingBook(null)}
+          isSaving={isSaving}
+          submitBook={submitBook}
         />
       )}
     </>

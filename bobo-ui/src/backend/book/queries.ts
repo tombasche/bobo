@@ -64,8 +64,11 @@ const updateBookMutation = gql`
   }
 `;
 
-export const useEditBook = () =>
-  useMutation(updateBookMutation, { refetchQueries: ['allBooks'] });
+export const useEditBook = (onCompleted: () => void) =>
+  useMutation(updateBookMutation, {
+    refetchQueries: ['allBooks'],
+    onCompleted,
+  });
 
 const deleteBookMutation = gql`
   mutation deleteBook($id: ID!) {
