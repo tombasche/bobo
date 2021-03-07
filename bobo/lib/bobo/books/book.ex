@@ -7,7 +7,6 @@ defmodule Bobo.Books.Book do
     field(:title, :string)
     field(:rating, :float)
     field(:genres, {:array, :string})
-    field(:date_started, :date)
     field(:date_finished, :date)
     field(:comments, :string)
 
@@ -17,7 +16,7 @@ defmodule Bobo.Books.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:title, :author, :rating, :genres, :date_started, :date_finished, :comments])
+    |> cast(attrs, [:title, :author, :rating, :genres, :date_finished, :comments])
     |> validate_required([:title, :author, :rating, :genres, :date_finished])
   end
 end

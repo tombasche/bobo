@@ -10,7 +10,6 @@ defmodule Bobo.BooksTest do
       author: "some author",
       comments: "some comments",
       date_finished: ~D[2010-04-17],
-      date_started: ~D[2010-04-17],
       genres: ["fantasy", "crime"],
       rating: 3,
       title: "Fantasy"
@@ -19,7 +18,6 @@ defmodule Bobo.BooksTest do
       author: "some updated author",
       comments: "some updated comments",
       date_finished: ~D[2011-05-18],
-      date_started: ~D[2011-05-18],
       genres: ["fiction", "crime"],
       rating: 4,
       title: "Crime"
@@ -28,7 +26,6 @@ defmodule Bobo.BooksTest do
       author: nil,
       comments: nil,
       date_finished: nil,
-      date_started: nil,
       genres: nil,
       rating: nil,
       title: nil
@@ -62,7 +59,6 @@ defmodule Bobo.BooksTest do
       assert book.author == "some author"
       assert book.comments == "some comments"
       assert book.date_finished == ~D[2010-04-17]
-      assert book.date_started == ~D[2010-04-17]
       assert book.genres == ["fantasy", "crime"]
       assert book.rating == 3
       assert book.title == "Fantasy"
@@ -78,7 +74,6 @@ defmodule Bobo.BooksTest do
       assert book.author == "some updated author"
       assert book.comments == "some updated comments"
       assert book.date_finished == ~D[2011-05-18]
-      assert book.date_started == ~D[2011-05-18]
       assert book.genres == ["fiction", "crime"]
       assert book.rating == 4.0
       assert book.title == "Crime"

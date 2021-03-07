@@ -10,7 +10,6 @@ defmodule BoboWeb.Schema do
     field(:rating, non_null(:float))
     field(:genres, list_of(:string))
     field(:date_finished, non_null(:string))
-    field(:date_started, :string)
     field(:comments, :string)
     field(:updated_at, :string)
   end
@@ -21,7 +20,6 @@ defmodule BoboWeb.Schema do
     field(:rating, :float)
     field(:genres, list_of(:string))
     field(:date_finished, :string)
-    field(:date_started, :string)
     field(:comments, :string)
   end
 
