@@ -1,12 +1,12 @@
 import React, { SyntheticEvent } from 'react';
 import { clean, validate } from '../backend/book/validate';
-import Add from '../components/Add';
-import Modal from '../components/Modal';
-import BookForm from '../components/form/BookForm';
+import Add from './Add';
+import Modal from './Modal';
+import BookForm from './form/BookForm';
 import Book, { blankBook, withTodaysDate } from '../types/Book';
 import any from '../helpers/Any';
 import { useValidationErrors } from '../backend/book/formValidation';
-import FormErrorMessage from '../components/form/FormErrorMessage';
+import FormErrorMessage from './form/FormErrorMessage';
 import { MutationTuple } from '@apollo/client';
 
 const AddBook = ({

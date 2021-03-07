@@ -9,6 +9,7 @@ export default interface Book {
   comments: string;
   updatedAt: string;
   dateFinished: string;
+  __typename?: string;
 }
 
 export type NewBook = {

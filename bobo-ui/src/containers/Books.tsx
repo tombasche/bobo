@@ -24,8 +24,6 @@ export function Books() {
     setDeletedBookTitle(data.deleteBook.title);
   });
 
-  const [editBook, { loading: isSaving }] = useEditBook();
-
   React.useEffect(() => {
     if (deletedBookTitle) {
       const timeout = setTimeout(() => {

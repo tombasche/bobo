@@ -32,7 +32,8 @@ const EditBook = ({
       setValidationErrors(result.message);
       return;
     }
-    submitBook({ variables: result.value });
+    const vars = { id: bookToEdit.id, book: result.value };
+    submitBook({ variables: vars });
     reset();
   };
 

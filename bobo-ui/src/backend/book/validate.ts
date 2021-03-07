@@ -3,7 +3,7 @@ import Book, { NewBook, RequiredBookFields } from '../../types/Book';
 import all from '../../helpers/All';
 
 export const clean = (b: Book) => {
-  const { id, updatedAt, rating, ...rest } = b;
+  const { id, updatedAt, rating, __typename, ...rest } = b;
   return {
     ...rest,
     rating: parseInt(`${rating}`),
