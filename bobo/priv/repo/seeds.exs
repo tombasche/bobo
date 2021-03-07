@@ -21,7 +21,6 @@ alias Bobo.Books
     "fantasy"
   ],
   date_finished: ~D[2020-01-03],
-  date_started: ~D[2019-12-27],
   comments: "Lots of talk of food"
 })
 |> Books.create_book()
