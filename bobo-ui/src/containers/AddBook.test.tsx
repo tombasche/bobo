@@ -4,6 +4,7 @@ import {
   fireEvent,
   screen,
   getByLabelText,
+  waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
@@ -13,6 +14,7 @@ import AddBook from '../components/AddBook';
 import { blankBook } from '../types/Book';
 import { toEmoji } from '../components/Rating';
 import { useCreateBook } from '../backend/book/queries';
+import userEvent from '@testing-library/user-event';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -108,4 +110,13 @@ test('Opening the modal doesnt cause fields to be highlighted', () => {
     border: 1px solid red;
     box-shadow: 0 0 5px red;
   `);
+});
+
+test('Clicking outside of the modal causes it to close', async () => {
+  render(node);
+  clickAdd();
+  userEvent.click(document.body);
+  await waitFor(() =>
+    expect(screen.queryByText(/Add Book/)).not.toBeInTheDocument(),
+  );
 });
