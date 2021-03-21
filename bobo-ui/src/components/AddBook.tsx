@@ -54,6 +54,7 @@ const AddBook = ({
           change={updateBook}
           validFields={validationErrors}
           isSaving={isSaving}
+          cancel={reset}
         />
       </Modal>
     </>

@@ -52,3 +52,12 @@ test('Hitting the submit button works without error', async () => {
     expect(screen.queryByText(/Edit Book/)).not.toBeInTheDocument(),
   );
 });
+
+test('Clicking cancel closes the modal', async () => {
+  const editContainer = await openEditModal();
+  const cancelButton = getByRole(editContainer!, 'cancel');
+  fireEvent.click(cancelButton);
+  await waitFor(() =>
+    expect(screen.queryByText(/Edit Book/)).not.toBeInTheDocument(),
+  );
+});

@@ -5,6 +5,7 @@ import {
   screen,
   getByLabelText,
   waitFor,
+  getByRole,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
@@ -116,6 +117,17 @@ test('Clicking outside of the modal causes it to close', async () => {
   render(node);
   clickAdd();
   userEvent.click(document.body);
+  await waitFor(() =>
+    expect(screen.queryByText(/Add Book/)).not.toBeInTheDocument(),
+  );
+});
+
+test('Clicking cancel causes it to close', async () => {
+  render(node);
+  clickAdd();
+  const container = screen.getByText(/Add Book/).closest('div');
+  const cancelButton = getByRole(container!, 'cancel');
+  fireEvent.click(cancelButton);
   await waitFor(() =>
     expect(screen.queryByText(/Add Book/)).not.toBeInTheDocument(),
   );

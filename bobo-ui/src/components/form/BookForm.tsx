@@ -10,6 +10,8 @@ import Form from './Form';
 import Field from './Field';
 import Fields from './Fields';
 import Label from './Label';
+import CancelButton from '../CancelButton';
+import styled from 'styled-components';
 
 type FieldChangeEvent = (
   e: React.SyntheticEvent<HTMLElement>,
@@ -22,7 +24,12 @@ interface BookFormProps {
   change: FieldChangeEvent;
   validFields: ValidFields;
   isSaving: boolean;
+  cancel: () => void;
 }
+
+const Buttons = styled.div`
+  display: flex;
+`;
 
 const hasError = (validFields: ValidFields, field: string): boolean => {
   return validFields[field] !== undefined && !validFields[field];
@@ -34,6 +41,7 @@ const BookForm = ({
   change,
   validFields,
   isSaving,
+  cancel,
 }: BookFormProps) => {
   return (
     <Form onSubmit={(e) => submit(e, book)}>
@@ -84,7 +92,10 @@ const BookForm = ({
           />
         </Field>
       </Fields>
-      <SubmitButton isSaving={isSaving} />
+      <Buttons>
+        <SubmitButton isSaving={isSaving} />
+        <CancelButton onClick={cancel} />
+      </Buttons>
     </Form>
   );
 };

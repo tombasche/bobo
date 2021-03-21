@@ -74,6 +74,7 @@ export function Books() {
           bookToEdit={editingBook}
           isSaving={isSaving}
           submitBook={submitBook}
+          closeModal={() => setEditingBook(null)}
         />
       )}
     </>
